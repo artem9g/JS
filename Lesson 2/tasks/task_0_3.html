@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Lesson 2</title>
+</head>
+
+<body>
+    <h1>Задача 0.3</h1>
+    <p>Обчислити значення виразу: S3=кубічний корень з (a+b)c;</p>
+    <script>
+        //1.Вводимо необхідні дані
+        const a = parseFloat(prompt("Введіть число а", 0))
+        const b = parseFloat(prompt("Введіть число b", 0))
+        const c = parseFloat(prompt("Введіть число c  ", 0))
+        let S3
+
+        //2.Знаходимо результат
+        S3 = Math.cbrt((a + b) * c);
+
+        //3.Виводимо результат
+        document.write(`<b>Результат:</b> S3 = ${S3.toFixed(2)}`)
+    </script>
+</body>
+
+
+</html>

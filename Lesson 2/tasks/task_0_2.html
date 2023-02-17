@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Lesson 2</title>
+</head>
+
+<body>
+    <h1>Задача 0.2</h1>
+    <p>Обчислити значення виразу: S2=квадратний корень з((a+b)/(2a)) ;</p>
+    <script>
+        //1.Вводимо необхідні дані
+        const a = parseFloat(prompt("Введіть число а", 0))
+        const b = parseFloat(prompt("Введіть число b", 0))
+        let S2
+
+        //2.Знаходимо результат
+        S2 = Math.sqrt((a + b) / (2 * a));
+
+        //3.Виводимо результат
+        document.write(`<b>Результат:</b> S2 = ${S2.toFixed(2)}`)
+    </script>
+</body>
+
+</html>

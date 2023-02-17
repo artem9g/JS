@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Lesson 2</title>
+</head>
+
+<body>
+    <h1>Задача 1</h1>
+    <p>Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці</p>
+    <script>
+
+        //1.Вводимо необхідні дані
+        const a = parseFloat(prompt("Введіть число а", 0))
+        const b = parseFloat(prompt("Введіть число b", 0))
+        let sum
+        let multiplication
+        let wholeFraction_1
+        let wholeFraction_2
+
+        //2.Знаходимо результат
+        sum = a + b
+        multiplication = a * b
+        wholeFraction_2 = b / a
+        wholeFraction_1 = a / b
+
+        //3.Виводимо результат
+        document.write(`
+        <table border="2px" >
+        <tbody>
+            <tr>
+                <th>Сума чисел a,b </th>
+                <th>Добуток чисел a,b </th>
+                <th>Частка чисел a від b </th>
+                <th>Частка чисел b від a </th>
+            </tr>
+            <tr>
+                <td>${sum}</td>
+                <td>${multiplication}</td>
+                <td>${wholeFraction_2.toFixed(2)}</td>
+                <td>${wholeFraction_1.toFixed(2)}</td>
+            </tr>
+        </tbody>
+            </table>
+            `)
+
+    </script>
+
+</body>
+
+</html>

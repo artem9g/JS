@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./css/task_6.css">
+</head>
+
+
+<body>
+    <h1>Задача 6</h1>
+    <p> З клавіатури вводяться вартість товару та кількість одиниць 3 товарів.
+        Обчислити вартість кожного товару окремо та загальну вартість.
+        Вивести чек (як у супермаркеті) використовуючи елементи розмітки.</p>
+    <script>
+        //1.Вводимо необхідні дані 
+        const prodName_1 = parseFloat(prompt("Введіть назву першого товару ", "Товар-1"))
+        const prodPrice_1 = parseFloat(prompt("Введіть вартість першого товару ", "0"))
+        const prodAmount_1 = parseFloat(prompt("Введіть кількість першого товару ", "0"))
+        let prodTotalCost_1
+
+        const prodName_2 = parseFloat(prompt("Введіть назву другого товару ", "Товар-2"))
+        const prodPrice_2 = parseFloat(prompt("Введіть вартість другого товару ", ""))
+        const prodAmount_2 = parseFloat(prompt("Введіть кількість другого товару ", ""))
+        let prodTotalCost_2
+
+        const prodName_3 = parseFloat(prompt("Введіть назву трерього товару ", "Товар-1"))
+        const prodPrice_3 = parseFloat(prompt("Введіть вартість третього товару ", ""))
+        const prodAmount_3 = parseFloat(prompt("Введіть кількість третього товару ", ""))
+        let prodTotalCost_3
+
+        const prodName_4 = parseFloat(prompt("Введіть назву четвертого товару ", "Товар-4"))
+        const prodPrice_4 = parseFloat(prompt("Введіть вартість четвертого товару ", ""))
+        const prodAmount_4 = parseFloat(prompt("Введіть кількість четвертого товару ", ""))
+        let prodTotalCost_4
+
+        let allProductsTotalCosts
+
+        //2.Знаходимо результат
+        prodTotalCost_1 = prodPrice_1 * prodAmount_1
+        prodTotalCost_2 = prodPrice_2 * prodAmount_2
+        prodTotalCost_3 = prodPrice_3 * prodAmount_3
+        prodTotalCost_4 = prodPrice_4 * prodAmount_4
+        totalCosts = prodTotalCost_1 + prodTotalCost_2 + prodTotalCost_3 + prodTotalCost_4
+
+        //3.Виводимо результат
+        document.write(` 
+        <div class="wrapper">
+        <h4>Чек № 222</h4>
+        <div class="check">
+            <div class="check__headers">
+                <div class="check__header-number">№</div>
+                <div class="check__header-name">Назва товару</div>
+                <div class="check__header-amount">Кількість</div>
+                <div class="check__header-price">Ціна</div>
+                <div class="check__header-total">Сума</div>
+            </div>
+            <div class="check__products">
+                <div class="check__product product">
+                    <div class="product__number">1. </div>
+                    <div class="product__name">${prodName_1}</div>
+                    <div class="product__amount">${prodAmount_1}</div>
+                    <div class="product__price">${prodPrice_1}</div>
+                    <div class="product__total-price"> ${prodTotalCost_1}</div>
+                </div>
+                <div class="check__product product">
+                    <div class="product__number">2. </div>
+                    <div class="product__name">${prodName_2}</div>
+                    <div class="product__amount">${prodAmount_2}</div>
+                    <div class="product__price">${prodPrice_2}</div>
+                    <div class="product__total-price"> ${prodTotalCost_2}</div>
+                </div>
+                <div class="check__product product">
+                    <div class="product__number">3. </div>
+                    <div class="product__name">${prodName_3}</div>
+                    <div class="product__amount">${prodAmount_3}</div>
+                    <div class="product__price">${prodPrice_3}</div>
+                    <div class="product__total-price"> ${prodTotalCost_3}</div>
+                </div>
+                <div class="check__product product">
+                    <div class="product__number">4 </div>
+                    <div class="product__name">${prodName_4}</div>
+                    <div class="product__amount">${prodAmount_4}</div>
+                    <div class="product__price">${prodPrice_4}</div>
+                    <div class="product__total-price"> ${prodTotalCost_4}</div>
+                </div>
+            </div>
+            <div class="check__footer">
+                <div class="check__footer-title">Total price: </div>
+                <div 2class="check__total-amount">${totalCosts}.</div>
+            </div>
+        </div>
+    </div>
+`)
+
+    </script>
+
+</body>
+
+</html>
