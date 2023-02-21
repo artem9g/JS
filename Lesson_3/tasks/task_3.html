@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Lesson 3</title>
+</head>
+
+<body>
+    <h1>Задача 3</h1>
+    <p> <b>Завдання:</b> Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.</p>
+    <script>
+        //1.Вводимо необхідні дані
+        const intMin = 1
+        const intMax = 5
+
+        let inputNumber_1
+        let inputNumber_2
+        let randomNumber
+        let messageResult
+
+        //2.Генеруєм випадкое число
+        randomNumber = Math.floor(Math.random() * (intMax - intMin) + intMin)
+        //3.Перша спробав вгадати число
+        inputNumber_1 = parseInt(prompt("Спроба 1. Вгадайде число від 1 до 5", "1"))
+        if (randomNumber === inputNumber_1)
+            messageResult = "Ви вгадали цифру з 1 спроби"
+        //4.Друга спроба вгадати число
+        else {
+            inputNumber_2 = parseInt(prompt("Нажаль ви не вгадали з першої спроб сробуйте ще. Спроба 2. Вгадайде число від 1 до 5", "1"))
+            if (randomNumber === inputNumber_2)
+                messageResult = "Ви вгадали цифру з 2 спроби"
+            else messageResult = "Нажаль ви не вгадали цифру з двух спроб"
+        }
+        //5.Виводимо результат
+        document.write(`<b>Результат: </b>${messageResult}. <br>Random number is ${randomNumber}`)
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Lesson 3</title>
+</head>
+
+<body>
+    <h1>Задача 2</h1>
+    <p> <b>Завдання:</b> З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то відмовляємо у покупці, інакше, якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.</p>
+    <script>
+        //1.Вводимо необхідні дані
+        const priceProduct = prompt("Введіть ціну товару", "0")
+        const amountOfMoney = prompt("Введіть кількість грошей", "0")
+        const ticketPrice = 4
+        let restOfMoney
+        let messageResult
+
+        //2.Знаходимо результат
+        restOfMoney = amountOfMoney - priceProduct
+        if (restOfMoney === 0 || restOfMoney < ticketPrice11)
+            messageResult = ("Дякую за покупку.")
+        else if (restOfMoney >= ticketPrice)
+            messageResult = ("Дякую за покупку, придбайте лотерей білет на решту.")
+        else messageResult = ("Недостатньо грошей на покупку товару.")
+
+        //3.Виводимо результат
+        document.write(`<b>Результат: </b>${messageResult}`)
+
+    </script>
+
+</body>
+
+</html>

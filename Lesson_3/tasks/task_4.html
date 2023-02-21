@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Lesson 3</title>
+</head>
+
+<body>
+    <h1>Задача 4</h1>
+    <p> <b>Завдання:</b> З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).</p>
+    <script>
+        //1.Вводимо необхідні дані
+        const customerAge = parseInt(prompt("Введіть вік", "1"))
+        const kinderGardenStart = 2
+        const schoolboyStart = 6
+        const studentStart = 17
+        const employeeStart = 23
+        const pensionerStart = 66
+        const toMutchAge = 120
+        let resultMessage
+        //2.Знаходимо результат
+        switch (true) {
+            case customerAge < 2: resultMessage = "Вік дитини до дитячого садку "
+                break
+            case customerAge < 7: resultMessage = "Дитина в дитячому садку "
+                break
+            case customerAge < 18: resultMessage = "Школяр"
+                break
+            case customerAge < 23: resultMessage = "Студент"
+                break
+            case customerAge < 66: resultMessage = "Працівник"
+                break
+            case customerAge < 120: resultMessage = "Пенсіонер"
+                break
+            default: resultMessage = "Cтарше 120 років? Привітайте!"
+        }
+        //3.Виводимо результат
+        document.write(`<b>Результат: </b>${resultMessage}`)
+
+    </script>
+
+</body>
+
+</html>

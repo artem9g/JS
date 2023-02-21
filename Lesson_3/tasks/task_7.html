@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Lesson 4</title>
+</head>
+
+<body>
+    <h1>Задача 7</h1>
+    <p> <b>Завдання:</b> З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься.</p>
+    <script>
+        //1.Вводимо необхідні дані
+        const dayMonday = 1
+        const dayTuesday = 2
+        const dayWednesday = 3
+        const dayThursday = 4
+        const dayFriday = 5
+        const daySatuday = 6
+        const daySunday = 7
+        const customDayofWeek = parseInt(prompt("Введідь номер дня тижня від 1-7", "1"))
+        console.log(customDayofWeek)
+        let resultMessage
+        //2.Знаходимо результат
+        switch (customDayofWeek) {
+            case 1: resultMessage = "Monday"
+                break
+            case 2: resultMessage = "Tuesday"
+                break
+            case 3: resultMessage = "Wednesday"
+                break
+            case 4: resultMessage = "Thursday"
+                break
+            case 5: resultMessage = "Friday"
+                break
+            case 6: resultMessage = "Satuday"
+                break
+            case 7: resultMessage = "Sunday"
+                break
+            default: resultMessage = "Невірний ввід. Введідь номер дня тижня від 1-7"
+        }
+        //3.Виводимо результат
+        document.write(`<b>Результат: </b>${resultMessage}`)
+
+    </script>
+
+</body>
+
+</html>
