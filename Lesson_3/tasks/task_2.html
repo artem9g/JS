@@ -13,7 +13,7 @@
     <p> <b>Завдання:</b> З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то відмовляємо у покупці, інакше, якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.</p>
     <script>
         //1.Вводимо необхідні дані
-        const priceProduct = prompt("Введіть ціну товару", "0")
+        const priceProduct = parseInt(prompt("Введіть ціну товару", "0"))
         const amountOfMoney = prompt("Введіть кількість грошей", "0")
         const ticketPrice = 4
         let restOfMoney
@@ -21,9 +21,10 @@
 
         //2.Знаходимо результат
         restOfMoney = amountOfMoney - priceProduct
-        if (restOfMoney === 0 || restOfMoney < ticketPrice11)
+
+        if (amountOfMoney >= priceProduct && restOfMoney < ticketPrice) //перевірка що грошей хватить на покутку товару та що решти не стаче на білет
             messageResult = ("Дякую за покупку.")
-        else if (restOfMoney >= ticketPrice)
+        else if (restOfMoney >= ticketPrice) //перевірка чи вистачає на білет з решти коштів
             messageResult = ("Дякую за покупку, придбайте лотерей білет на решту.")
         else messageResult = ("Недостатньо грошей на покупку товару.")
 
