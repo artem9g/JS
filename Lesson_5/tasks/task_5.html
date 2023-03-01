@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 5</title>
+  </head>
+
+  <body>
+    <h1>Задача 5</h1>
+    <p><b>Завдання:</b>Вивести таблицю:</p>
+    <img src="../img/task-5.png" alt="#" />
+    <h2><b>Результат: </b></h2>
+    <table style="border: solid 2px">
+      <tbody>
+        <script>
+          // cтворили змінну counter в зашальному полі видимості - це дозволяє нам вести правельний облік,
+          //ми її створюємо один раз і змінюємо при кожній ітераціі
+          // і через цикл і вкладений цикл створили таблицу
+          // далі вивели число в ячейці через  змінну counter яка змінююєцься при кожній ітераціі
+          let counter = 1;
+          for (let i = 1; i <= 3; i++) {
+            document.write(`<tr style="border: solid 2px">`);
+            for (let i = 1; i <= 3; i++)
+              document.write(`<td style="border: solid 2px">${counter++}</td>`);
+            document.write(` </tr>`);
+          }
+        </script>
+      </tbody>
+    </table>
+  </body>
+</html>

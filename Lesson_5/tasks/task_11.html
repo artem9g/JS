@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 5</title>
+  </head>
+
+  <body>
+    <h1>Задача 11</h1>
+    <p><b>Завдання:</b> Знайти суму 5 непарних чисел, що знаходяться між заданими користувачем числами.</p>
+
+    <h2><b>Результат: </b></h2>
+    <div>
+      <script>
+        //1.Вводимо необхідні дані
+        const customerintMin = parseInt(prompt("Введіть мінімальне число включно"))
+        const customerintMax = parseInt(prompt("Введіть максимальне число включно"))
+        let counterOdd = 0
+        let sumOdd = 0
+        //2.Обичслення
+        for (let i = customerintMin; i <= customerintMax; i++) {
+          if (i % 2 != 0) {
+            counterOdd++
+            sumOdd = sumOdd + i
+          }
+          if (counterOdd >= 5) break // закінчили досрочно цикл, т.к. знайшли 5 непарних чисел
+        }
+        //3.Виводимо резульат
+        document.write(`<h3>Cума ${counterOdd} непарних чисел во вказаному діапазоні: ${sumOdd} </h3>`)
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 5</title>
+  </head>
+
+  <body>
+    <h1>Задача 4</h1>
+    <p><b>Завдання:</b> Вивести таблицю з 3 рядків і 7 стовпців</p>
+    <img src="../img/task-4.png" alt="#" />
+    <h2><b>Результат: </b></h2>
+    <table style="border: solid 2px">
+      <tbody>
+        <script>
+          for (let i = 1; i <= 3; i++) {
+            document.write(`<tr style="border: solid 2px">`);
+            for (let i = 1; i <= 7; i++)
+              document.write(`<td style="border: solid 2px">${i}</td>`);
+            document.write(` </tr>`);
+          }
+        </script>
+      </tbody>
+    </table>
+  </body>
+</html>

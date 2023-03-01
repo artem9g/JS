@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 5</title>
+  </head>
+
+  <body>
+    <h1>Задача 10</h1>
+    <p><b>Завдання:</b> Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами.</p>
+
+    <h2><b>Результат: </b></h2>
+    <div>
+      <script>
+        //1.Вводимо необхідні дані
+        const customerintMin = parseInt(prompt("Введіть мінімальне число включно"))
+        const customerintMax = parseInt(prompt("Введіть максимальне число включно"))
+        let sumOdd = 0
+        //2.Обичслення
+        for (let i = customerintMin; i <= customerintMax; i++) {
+          if (i % 2 != 0) {
+            sumOdd++
+          }
+        }
+        //3.Виводимо резульат
+        document.write(`<h3>Кількість непарних чисел во вказаному діапазоні: ${sumOdd} </h3>`)
+      </script>
+    </div>
+  </body>
+</html>

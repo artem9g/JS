@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 5</title>
+  </head>
+
+  <body>
+    <h1>Задача 9</h1>
+    <p>
+      <b>Завдання:</b>Користувач загадує число. Комп’ютер задає питання поки не
+      вгадає число користувача (використати confirm).
+    </p>
+
+    <h2><b>Результат: </b></h2>
+    <div>
+      <script>
+        //1.Вводимо необхідні дані
+        const intMin = 1;
+        const intMax = 5; // в задачі не уточнено, вів ці перемінні для настройці
+        let result = false;
+        while (result === false) {
+          //Комп’ютер задає питання поки невгадає число користувача
+          let randomInt = Math.floor(
+            Math.random() * (intMax - intMin) + intMin
+          );
+          let result = confirm(`Ви зашадали число ${randomInt}?`);
+          //перевірка на що юзер нажав- так - що число вірне і тоді завершуемо цикл і виводимо результат
+          if (result) {
+            document.write(`<h2>Ви вгадали це число: ${randomInt} </h2>`);
+            break;
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>

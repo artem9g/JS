@@ -1,39 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
     <title>Lesson 3</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Задача 5</h1>
-    <p> <b>Завдання:</b> З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).</p>
+    <p>
+      <b>Завдання:</b> З клавіатури вводиться назва категорії водія (А-мотоцикл,
+      В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву
+      транспортного засобу, яким він може керувати.
+    </p>
     <script>
-        //1.Вводимо необхідні дані
-        const categoryA = "A"
-        const categoryB = "B"
-        const categoryC = "C"
-        const customCategory = prompt("Введідь вашу категорію", "A,B,C").toUpperCase()
-        console.log(customCategory)
-        let resultMessage
-        //2.Знаходимо результат
-        switch (customCategory) {
-            case categoryA: resultMessage = "Мотоцикли"
-                break
-            case categoryB: resultMessage = "Легкові автомобілі"
-                break
-            case categoryC: resultMessage = "Вантажівкі та Легкові автомобілі"
-                break
-            default: resultMessage = "Введіть категорію A чи B, чи C - латініцей"
-        }
-        //3.Виводимо результат
-        document.write(`<b>Результат: </b>${resultMessage}`)
-
+      //1.Вводимо необхідні дані
+      const categoryA = "A";
+      const categoryB = "B";
+      const categoryC = "C";
+      const customCategory = prompt(
+        "Введідь вашу категорію",
+        "A,B,C"
+      ).toUpperCase();
+      console.log(customCategory);
+      let resultMessage;
+      //2.Знаходимо результат
+      switch (customCategory) {
+        case categoryA:
+          resultMessage = "Мотоцикли";
+          break;
+        case categoryB:
+          resultMessage = "Легкові автомобілі";
+          break;
+        case categoryC:
+          resultMessage = "Вантажівкі та Легкові автомобілі";
+          break;
+        default:
+          resultMessage = "Введіть категорію A чи B, чи C - латініцей";
+      }
+      //3.Виводимо результат
+      document.write(`<b>Результат: </b>${resultMessage}`);
     </script>
-
-</body>
-
+  </body>
 </html>

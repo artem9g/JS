@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 5</title>
+  </head>
+
+  <body>
+    <h1>Задача 7</h1>
+    <p><b>Завдання:</b>Вивести на екран N абзаців (N вводиться користувачем) за зразком:</p>
+    <img src="../img/task-7.png" alt="#" />
+
+    <h2><b>Результат: </b></h2>
+    <div>
+      <script>
+        //Вводимо необхідні данні
+        const userNumber = parseInt(prompt("Введіть число абзаців"))
+        let counter = 1
+        // cтворили змінну counter в зашальному полі видимості - це дозволяє нам вести правельний облік,
+        //ми її створюємо один раз і змінюємо при завершені ітерації цікла по створеню блока/Розділа
+
+        //першщий цикл створюємо розділи і запвнюємо їх
+        for (let i = 1; i <= userNumber; i++) {
+          document.write(`<h1>Заголовок ${counter}</h1>`)
+          for (let i = 1; i <= counter; i++) {
+            // другий цикл створюємо параграфи і рахуемо іх
+            document.write(` <p>Розділ ${counter}, праграф ${i}</p>`)
+          }
+          document.write(`<hr />`)
+          counter++
+        }
+      </script>
+    </div>
+  </body>
+</html>

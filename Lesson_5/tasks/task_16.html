@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 5</title>
+    <style></style>
+  </head>
+
+  <body>
+    <h1>Задача 16</h1>
+    <p>
+      <b>Завдання:</b>
+      Користувач поступово вводить прибуток магазину за кожен день протягом N тижнів. Знайти загальну величину прибутку та вивести
+      величину прибутку протягом кожного окремого тижня.
+    </p>
+    <div>
+      <script>
+        //1.Вводимо необхідні дані
+        const amountWeeks = parseInt(prompt(`Введіть кількість тижнів`, 1))
+        let totalIncome = 0
+        let weekIncome = 0
+        for (let i = 1; i <= amountWeeks; i++) {
+          // цикл для створення неділь
+          for (let a = 1; a <= 7; a++) {
+            // цикл дневної виручки, щоб не вводити купу- зробив рандомний дохід за день
+            weekIncome = 0
+            weekIncome = weekIncome + Math.floor(Math.random() * (1000 - 1) + 1) //генеруємо кожнодневну виручку і добовляємо її до загально-тижневої
+          }
+          totalIncome = totalIncome + weekIncome // загально тижневий дохід додаємо в загальний
+          document.write(`Виручка за ${i} тиждень = ${weekIncome} <br>`) // виводимо загально тижневий дохід
+        }
+        document.write(`Виручка за ${amountWeeks} тижнів = ${totalIncome} <br>`) // виводимо тотал   дохід за всі тижні
+      </script>
+    </div>
+  </body>
+</html>

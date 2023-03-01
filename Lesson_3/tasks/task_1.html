@@ -1,36 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
     <title>Lesson 3</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Задача 1</h1>
-    <p> <b>Завдання:</b> З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести на екран ім’я тієї дитини, у якої кількість цукерок є більшою, або вивести, що кількість однакова.</p>
+    <p>
+      <b>Завдання:</b> З клавіатури вводяться імена двох дітей та кількість у
+      них цукерок. Вивести на екран ім’я тієї дитини, у якої кількість цукерок є
+      більшою, або вивести, що кількість однакова.
+    </p>
     <script>
-        //1.Вводимо необхідні дані
-        const childName_1 = prompt("Введіть будь ласка імя першої дитини", "Ім'я")
-        const childName_2 = prompt("Введіть будь ласка імя другої дитини", "Ім'я")
-        const amountCandy_1 = prompt("Введіть будь ласка кількість цукерок у першої дитини", "0")
-        const amountCandy_2 = prompt("Введіть будь ласка кількість цукерок у другої дитини", "0")
-        let resultMessage
+      //1.Вводимо необхідні дані
+      const childName_1 = prompt(
+        "Введіть будь ласка імя першої дитини",
+        "Ім'я"
+      );
+      const childName_2 = prompt(
+        "Введіть будь ласка імя другої дитини",
+        "Ім'я"
+      );
+      const amountCandy_1 = parseInt(
+        prompt("Введіть будь ласка кількість цукерок у першої дитини", "0")
+      );
+      const amountCandy_2 = parseInt(
+        prompt("Введіть будь ласка кількість цукерок у другої дитини", "0")
+      );
+      let resultMessage;
 
-        //2.Знаходимо результат
-        if (amountCandy_1 > amountCandy_2)
-            resultMessage = childName_1
-        else if (amountCandy_1 < amountCandy_2)
-            resultMessage = childName_2
-        else resultMessage = "Кількість конфет у дітей однакова"
+      //2.Знаходимо результат
+      if (amountCandy_1 > amountCandy_2) resultMessage = childName_1;
+      else if (amountCandy_1 < amountCandy_2) resultMessage = childName_2;
+      else resultMessage = "Кількість конфет у дітей однакова";
 
-        //3.Виводимо результат
-        document.write(`<b>Результат: </b>${resultMessage}`)
-
+      //3.Виводимо результат
+      document.write(`<b>Результат: </b>${resultMessage}`);
     </script>
-
-</body>
-
+  </body>
 </html>

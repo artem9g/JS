@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 5</title>
+  </head>
+
+  <body>
+    <h1>Задача 12</h1>
+    <p>
+      <b>Завдання:</b> Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне з
+      чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн, три других – 200,
+      три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для вибору зображення за номером).
+    </p>
+    <img src="../img/task-12.png" alt="#" />
+    <h2><b>Результат: </b></h2>
+    <div>
+      <script>
+        //1.Вводимо необхідні дані
+        let counterCase_1 = 0 // личильники для підрахування результату
+        let counterCase_2 = 0
+        let counterCase_3 = 0
+        let counterCase_4 = 0
+        let result //перемінна в яку запишимо результат і потів виведемо
+        document.write(`<div>`)
+        for (let i = 0; i < 3; i++) {
+          let randomInt = Math.floor(Math.random() * (5 - 1) + 1) //генеруємо число-картику-виводимо її і записуємо в личильник
+          switch (randomInt) {
+            case 1:
+              document.write(`<img src="../img/task-12-cherry.png" alt="#">`)
+              counterCase_1++
+              break
+            case 2:
+              document.write(`<img src="../img/task-12-orange.png" alt="#">`)
+              counterCase_2++
+              break
+            case 3:
+              document.write(`<img src="../img/task-12-lemon.png" alt="#">`)
+              counterCase_3++
+              break
+            case 4:
+              document.write(`<img src="../img/task-12-watermelon.png" alt="#">`)
+              counterCase_4++
+              break
+          }
+        }
+        switch (
+          3 // після виводу картинок перевіряємо личинльники і формужмо результат
+        ) {
+          case counterCase_1:
+            result = 100
+            break
+          case counterCase_2:
+            result = 200
+            break
+          case counterCase_3:
+            result = 500
+            break
+          case counterCase_4:
+            result = 1000
+            break
+          default:
+            result = 0
+        }
+        document.write(`</div>`)
+
+        //3.Виводимо резульат
+        document.write(`<h3>Ваш вигриш = ${result} грн.</h3>`)
+      </script>
+    </div>
+  </body>
+</html>
