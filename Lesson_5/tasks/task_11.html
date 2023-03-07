@@ -20,12 +20,11 @@
         let counterOdd = 0
         let sumOdd = 0
         //2.Обичслення
-        for (let i = customerintMin; i <= customerintMax; i++) {
+        for (let i = customerintMin; i <= customerintMax && counterOdd < 5; i++) {
           if (i % 2 != 0) {
             counterOdd++
             sumOdd = sumOdd + i
           }
-          if (counterOdd >= 5) break // закінчили досрочно цикл, т.к. знайшли 5 непарних чисел
         }
         //3.Виводимо резульат
         document.write(`<h3>Cума ${counterOdd} непарних чисел во вказаному діапазоні: ${sumOdd} </h3>`)

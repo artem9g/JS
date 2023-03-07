@@ -9,7 +9,9 @@
 
   <body>
     <h1>Задача 8</h1>
-    <p><b>Завдання:</b>Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати confirm).</p>
+    <p>
+      <b>Завдання:</b>Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати confirm).
+    </p>
 
     <h2><b>Результат: </b></h2>
     <div>
@@ -18,20 +20,19 @@
         const intMin = 1
         const intMax = 1000 // в задачі не уточнено, вів ці перемінні для настройці
         // я так зрозумів число користувача не вводим, а він його тримає в голові і нам тільки відповідає,так чи ні
-        for (let i = 0; i <= 3; i++) {
+        let result
+        let randomInt
+        for (let i = 0; i < 3; i++) {
           //перевірка на те що 3 спроби закінчилися і тоді число не вгадане
-          if (i == 3) {
-            document.write(`<h2>Ви не вгадали число.</h2>`)
-            break
-          }
-          let randomInt = Math.floor(Math.random() * (intMax - intMin) + intMin)
-          let result = confirm(`Ви зашадали число ${randomInt}?`)
-          //перевірка на що юзер нажав- так - що число вірне і тоді завершуемо цикл і виводимо результат
-          if (result) {
-            document.write(`<h2>Ви вгадали це число: ${randomInt} </h2>`)
+          randomInt = Math.floor(Math.random() * (intMax - intMin) + intMin)
+          result = confirm(`Ви зашадали число ${randomInt}?`)
+          if (result === true) {
             break
           }
         }
+        if (result === true) {
+          document.write(`<h2>Ви вгадали це число: ${randomInt} </h2>`)
+        } else document.write(`<h2>Ви не вгадали число.</h2>`)
       </script>
     </div>
   </body>

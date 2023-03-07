@@ -20,12 +20,12 @@
         //1.Вводимо необхідні дані
         const amountWeeks = parseInt(prompt(`Введіть кількість тижнів`, 1))
         let totalIncome = 0
-        let weekIncome = 0
+        let weekIncome
         for (let i = 1; i <= amountWeeks; i++) {
           // цикл для створення неділь
+          weekIncome = 0
           for (let a = 1; a <= 7; a++) {
             // цикл дневної виручки, щоб не вводити купу- зробив рандомний дохід за день
-            weekIncome = 0
             weekIncome = weekIncome + Math.floor(Math.random() * (1000 - 1) + 1) //генеруємо кожнодневну виручку і добовляємо її до загально-тижневої
           }
           totalIncome = totalIncome + weekIncome // загально тижневий дохід додаємо в загальний

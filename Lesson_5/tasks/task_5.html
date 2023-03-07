@@ -19,12 +19,13 @@
           //ми її створюємо один раз і змінюємо при кожній ітераціі
           // і через цикл і вкладений цикл створили таблицу
           // далі вивели число в ячейці через  змінну counter яка змінююєцься при кожній ітераціі
-          let counter = 1;
+          let counter = 1
           for (let i = 1; i <= 3; i++) {
-            document.write(`<tr style="border: solid 2px">`);
-            for (let i = 1; i <= 3; i++)
-              document.write(`<td style="border: solid 2px">${counter++}</td>`);
-            document.write(` </tr>`);
+            document.write(`<tr style="border: solid 2px">`)
+            for (let a = 1; a <= 3; a++) {
+              document.write(`<td style="border: solid 2px">${counter++}</td>`)
+            }
+            document.write(` </tr>`)
           }
         </script>
       </tbody>

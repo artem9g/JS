@@ -28,12 +28,8 @@
           if (result < costsForPay) {
             //Виводимо рузультати в залежності
             parseInt(alert(`Вам не вистачає для покупки: ${costsForPay - result} грн.`))
-          } else if (result === costsForPay) {
-            alert(`Вам Вистачає грошей для покупки.`)
-            break
           } else {
             alert(`Вам Вистачає грошей для покупки.`)
-            break
           }
         } while (result < costsForPay)
       </script>

@@ -9,10 +9,7 @@
 
   <body>
     <h1>Задача 6</h1>
-    <p>
-      <b>Завдання:</b>Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за
-      зразком
-    </p>
+    <p><b>Завдання:</b>Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком</p>
     <img src="../img/task-6.png" alt="#" />
 
     <h2><b>Результат: </b></h2>
@@ -20,27 +17,27 @@
       <script>
         // cтворили змінну counter в зашальному полі видимості - це дозволяє нам вести правельний облік,
         //ми її створюємо один раз і змінюємо при кожній ітераціі
-        let counter = 1;
+        let counter = 1
         // і через циклb і вкладені цикли створили таблиці
         // далі вивели число в ячейці через  змінну counter яка змінююєцься при кожній ітераціі
 
         for (let i = 1; i <= 3; i++) {
           // перший цикл створюємо 3 таблиці і заповнюємо їх наступними циклами
           document.write(`<table style="border: solid 2px">
-          <tbody>`);
-          for (let i = 1; i <= 3; i++) {
+          <tbody>`)
+          for (let a = 1; a <= 3; a++) {
             // другий цикл створюємо рядки і заповнююємл їх столбцямі
-            document.write(`<tr style="border: solid 2px">`);
+            document.write(`<tr style="border: solid 2px">`)
             for (
-              let i = 1;
-              i <= 3;
-              i++ // третій цикл створюємо столбі в межах рядка
+              let a = 1;
+              a <= 3;
+              a++ // третій цикл створюємо столбі в межах рядка
             )
-              document.write(`<td style="border: solid 2px">${counter++}</td>`);
-            document.write(` </tr>`);
+              document.write(`<td style="border: solid 2px">${counter++}</td>`)
+            document.write(` </tr>`)
           }
           document.write(`</tbody>
-        </table>`);
+        </table>`)
         }
       </script>
     </div>
