@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 3</h1>
+    <p>
+      <b>Завдання:</b> Створити окремі функції, які для 4 чисел знаходять: 1)суму; 2)добуток; 3)середнє арифметичне; 4)мінімальне
+      значення.
+    </p>
+    <h2><b>Результат: </b></h2>
+    <script>
+      //1.Вводимо необхідні дані
+      const inputNumber1 = parseInt(prompt("Введіть перше число", ""))
+      const inputNumber2 = parseInt(prompt("Введіть друге число", ""))
+      const inputNumber3 = parseInt(prompt("Введіть трете число", ""))
+      const inputNumber4 = parseInt(prompt("Введіть четверте число", ""))
+      //2. Декларуємо функції
+      function sum(a, b, c, d) {
+        let result
+        result = a + b + c + d
+        return document.write(`Сумма = ${result} <br>`)
+      }
+      function multiply(a, b, c, d) {
+        let result
+        result = a * b * c * d
+        return document.write(`Добуток = ${result}<br>`)
+      }
+      function middleArifmetic(a, b, c, d) {
+        let result
+        result = (a + b + c + d) / 4
+        return document.write(`Середнє арифметичне = ${result}<br>`)
+      }
+      function minInt(a, b, c, d) {
+        let result = a
+        if (b < result) result = b
+        else if (c < result) result = c
+        else if (d < result) result = d
+        else result = a
+        return document.write(`Мінімальне
+      значення = ${result}<br>`)
+      }
+
+      // Визиваємо ф-цію
+      sum(inputNumber1, inputNumber2, inputNumber3, inputNumber4)
+      multiply(inputNumber1, inputNumber2, inputNumber3, inputNumber4)
+      middleArifmetic(inputNumber1, inputNumber2, inputNumber3, inputNumber4)
+      minInt(inputNumber1, inputNumber2, inputNumber3, inputNumber4)
+    </script>
+  </body>
+</html>

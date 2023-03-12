@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 7</h1>
+    <p>
+      <b>Завдання:</b> Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень
+      передаються у функцію)
+    </p>
+
+    <h2><b>Результат: </b></h2>
+    <div>
+      <script>
+        //Вводимо необхідні данні
+        const img_1 = "../img/img7_1.jpg"
+        const img_2 = "../img/img7_2.jpg"
+        const img_3 = "../img/img7_3.jpg"
+        const img_4 = "../img/img7_4.jpg"
+        //Декларуємо ф-цію
+        function randomImage(img_1, img_2, img_3, img_4) {
+          const randomImg = Math.floor(Math.random() * 4)
+          let result
+          //с помощью цикла проверяем радом число и подставляєм в случаж совпадения нужную картинку
+          for (let i = 0; i < 4; i++) {
+            // document.write(i)
+            if (i === randomImg) {
+              result = arguments[i]
+              break
+            } else continue
+          }
+          return document.write(`<img src="${result}">`)
+        }
+        //Викликаємо ф-цію
+        randomImage(img_1, img_2, img_3, img_4)
+      </script>
+    </div>
+  </body>
+</html>

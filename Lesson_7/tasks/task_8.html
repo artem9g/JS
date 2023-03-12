@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 8</h1>
+    <p>
+      <b>Завдання:</b>Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди
+      переходимо при кліку на зображення (тег img повине знаходитись у середині тега a:
+    </p>
+
+    <h2><b>Результат: </b></h2>
+    <div>
+      <script>
+        //1.Вводимо необхідні дані
+        const bannerImageSource = "../img/img7_1.jpg"
+        const bannerTitle = "Banner Title"
+        const bannerLink = "https://www.google.com"
+        //2.Декларужмо ф-цію
+        function getBanner(img, title, link) {
+          document.write(`<h3>${bannerTitle}<br ><a target="blank" href="${bannerLink}"><img src="${bannerImageSource}"></a>`)
+        }
+        //Викликаємо ф-цію
+        getBanner(bannerImageSource, bannerTitle, bannerLink)
+      </script>
+    </div>
+  </body>
+</html>

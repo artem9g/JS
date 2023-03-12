@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 4</h1>
+    <p>
+      <b>Завдання:</b> Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних,
+      кількість додатних, кількість більших за 100.
+    </p>
+    <h2><b>Результат: </b></h2>
+    <script>
+      //1.Вводимо необхідні дані
+      const inputNumber1 = parseInt(prompt("Введіть перше число", ""))
+      const inputNumber2 = parseInt(prompt("Введіть друге число", ""))
+      const inputNumber3 = parseInt(prompt("Введіть трете число", ""))
+      //2.Декларуємо функції
+      function threeOperation(a, b, c) {
+        let odd = 0
+        let even = 0
+        let numberOver100 = 0
+        //
+        if (a % 2 === 0) {
+          even++
+        } else odd++
+        if (a > 100) numberOver100++
+
+        if (b % 2 === 0) {
+          even++
+        } else odd++
+        if (b > 100) numberOver100++
+
+        if (c % 2 === 0) {
+          even++
+        } else odd++
+        if (c > 100) numberOver100++
+        //
+        return document.write(`Кількість парних = ${even}<br>
+        Кількість додатних = ${odd} <br>
+        Кількість більших за 100 = ${numberOver100} <br>`)
+      }
+      // Визиваємо ф-цію
+      threeOperation(inputNumber1, inputNumber2, inputNumber3)
+    </script>
+  </body>
+</html>

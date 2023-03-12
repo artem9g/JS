@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 0</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.</p>
+    </div>
+    <script>
+      //1.Вводимо необхідні дані
+      const inputNumberMounth = parseInt(prompt("Введіть номер місяця", ""))
+      //2. Декларуємо функцію
+      function detectSeason(inputNumberMounth) {
+        let resutSeason
+        switch (inputNumberMounth) {
+          case 1:
+          case 2:
+          case 12:
+            resutSeason = "Зима"
+            break
+          case 3:
+          case 4:
+          case 5:
+            resutSeason = "Весна"
+            break
+          case 6:
+          case 7:
+          case 8:
+            resutSeason = "Літо"
+            break
+          case 9:
+          case 10:
+          case 11:
+            resutSeason = "Осінь"
+            break
+          default:
+            resutSeason = "Невірні Данні"
+        }
+        //3.виводимо результат
+        return document.write(`<p><b>Результат: ${resutSeason}</b></p><ul>`)
+      }
+      //Викликаємо функцію
+      detectSeason(inputNumberMounth)
+    </script>
+  </body>
+</html>

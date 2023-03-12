@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 1</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>Створити функцію, яка за номером місяця повертає його назву.</p>
+    </div>
+    <script>
+      //1.Вводимо необхідні дані
+      const inputNumberMounth = parseInt(prompt("Введіть номер місяця", ""))
+      //2. Декларуємо функцію
+      function detectMounth(inputNumberMounth) {
+        let resutSeason
+        switch (inputNumberMounth) {
+          case 1:
+            resutSeason = "Січень"
+            break
+          case 2:
+            resutSeason = "Лютий"
+            break
+          case 3:
+            resutSeason = "Березень"
+            break
+          case 4:
+            resutSeason = "Квітень"
+            break
+          case 5:
+            resutSeason = "Травень"
+            break
+          case 6:
+            resutSeason = "Червень"
+            break
+          case 7:
+            resutSeason = "Липень"
+            break
+          case 8:
+            resutSeason = "Серпень"
+            break
+          case 9:
+            resutSeason = "Вересень"
+            break
+          case 10:
+            resutSeason = "Жовтень"
+            break
+          case 11:
+            resutSeason = "Листопад"
+            break
+          case 12:
+            resutSeason = "Грудень"
+            break
+          default:
+            resutSeason = "Невірні Данні"
+        }
+        //3.виводимо результат
+        return document.write(`<p><b>Результат: ${resutSeason}</b></p><ul>`)
+      }
+      //Викликаємо функцію
+      detectMounth(inputNumberMounth)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 6</h1>
+    <p>
+      <b>Завдання:</b> Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим
+      фіксованим повідомленням).
+    </p>
+
+    <h2><b>Результат: </b></h2>
+    <script>
+      //1.Вводимо необхідні дані
+      const amountString = parseInt(prompt("Введіть кількість рядків для таблиці", ""))
+      const amountColumn = parseInt(prompt("Введіть кількість стовбців для таблиці", ""))
+      const fixedMessage = prompt("Введіть фіксоване повідомлення для таблиці", "")
+      //2.Декларуємо функції
+
+      function getTable(intRow, intColumn, messageFixed = "") {
+        document.write(`
+                      <table style="border: solid 2px">
+                              <tbody  >`)
+
+        for (let i = 0; i < intRow; i++) {
+          document.write(`<tr>`)
+          for (let a = 0; a < intColumn; a++) {
+            document.write(`<td style="border: solid 2px"> ${messageFixed}</td>`)
+          }
+          document.write(`</td>`)
+        }
+
+        document.write(`
+                              </tbody>
+                      </table>`)
+      }
+      //Викликаємо ф-цію
+      getTable(amountString, amountColumn, fixedMessage)
+    </script>
+  </body>
+</html>

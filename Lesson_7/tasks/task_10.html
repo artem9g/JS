@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 10</h1>
+    <p>
+      <b>Завдання:</b> Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для
+      додатних показів температури.
+    </p>
+
+    <h2><b>Результат: </b></h2>
+    <div>
+      <script>
+        //1.Вводимо необхідні дані
+        const temperatyre_1 = parseInt(prompt("Введіть температуру за 1 день", ""))
+        const temperatyre_2 = parseInt(prompt("Введіть температуру за 2 день", ""))
+        const temperatyre_3 = parseInt(prompt("Введіть температуру за 3 день", ""))
+
+        //Декларуємо ф-цію
+        function getAveragePlusTemperature(temp_1, temp_2, temp_3) {
+          let sumPlusTemperature = 0
+          let counter = 0
+          for (let i = 0; i < 3; i++) {
+            // перевіряємо кожен аргумент чи він відємний і якщо так, то записуємо в лічільник
+            if (arguments[i] > 0) {
+              counter += 1
+              sumPlusTemperature += arguments[i]
+            }
+          }
+          return sumPlusTemperature / counter
+        }
+        // виводимо результат
+        document.write(
+          `Cереднє значення для додатних показів температури = 
+          ${getAveragePlusTemperature(temperatyre_1, temperatyre_2, temperatyre_3)}`
+        )
+      </script>
+    </div>
+  </body>
+</html>

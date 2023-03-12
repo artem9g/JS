@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 5</h1>
+    <p><b>Завдання:</b> Створити окремі функції, які переводять: Сантиметри у дюйми; Кілограми у фунти; Кілометри у милі.</p>
+    <h2><b>Результат: </b></h2>
+
+    <script>
+      //1.Вводимо необхідні дані
+      const inputCentimeter = parseInt(prompt("Введіть кількість сантиметрів", ""))
+      const inputKg = parseInt(prompt("Введіть кількість кілограмів", ""))
+      const inputKm = parseInt(prompt("Введіть кількість кілометрів", ""))
+      //2.Декларуємо функції
+      //функція для ввиводу результату
+      function writeResult(resultFunction, type) {
+        return document.write(`${type} = ${resultFunction.toFixed(2)}</br>`)
+      }
+      // 3 функції для перетворення:
+      function getІnches(cm) {
+        let result = cm / 2.54
+        return writeResult(result, "Дюймів")
+      }
+      function getPonds(kg) {
+        let result = kg * 2.20462
+        return writeResult(result, "Фунтів")
+      }
+      function getMiles(km) {
+        let result = km * 0.621371
+        return writeResult(result, "Милів")
+      }
+
+      // Визиваємо ф-цію
+      getІnches(inputCentimeter)
+      getPonds(inputKg)
+      getMiles(inputKm)
+    </script>
+  </body>
+</html>
