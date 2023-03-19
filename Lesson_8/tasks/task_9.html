@@ -26,6 +26,7 @@
         const battleField = makeBattleField(inputCeils, inputBattleShips)
         let counterStikes = 0
 
+        // ф-ція яка робить поле бою і виставляє рандомно кораблі
         function makeBattleField(numbersCeils, numberBattleShip) {
           let field = []
           //заповнюємо таблицю дефотним значенням
@@ -44,9 +45,10 @@
           }
           return field
         }
+
         // цикл який працює поки не потопимо всі кораблі
         do {
-          const strikeCeil = parseInt(prompt(`Введить клітинку для атаки від Нуля до ${inputBattleShips}`))
+          const strikeCeil = parseInt(prompt(`Введить клітинку для атаки від Нуля до ${inputCeils}`))
           if (battleField[strikeCeil] === 1) counterStikes++
         } while (counterStikes !== inputBattleShips)
 

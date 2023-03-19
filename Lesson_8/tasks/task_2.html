@@ -24,14 +24,14 @@
         console.log(randomNum)
         return randomNum
       }
-      //ф-ція для заповнювання массиву
+      //ф-ція для заповнювання массиву, 7 днів
       function fillArraysScores(fillableArray) {
         for (let i = 0; i < 7; i++) {
           fillableArray.push(getRandomScores())
         }
         return fillableArray
       }
-      //функція яка 1 раз аналізує дані і робить масив з ними
+      //функція яка 1 раз аналізує дані і робить масив з результатами
       function analysisWeekPerWeek(arrayClientAmount) {
         let daysUnder20 = []
         let daysMin = []
@@ -40,14 +40,15 @@
         let allClientWeekendDays = 0
         let allClientperWeek = 0
         for (let i = 0; i < arrayClientAmount.length; i++) {
+          //анализужмо по дням
           const clientsToday = arrayClientAmount[i]
           allClientperWeek += clientsToday //для підрахунку загального потоку, щоб вирахуватисреденб потім дні мін і макс
           if (clientsToday < 20) daysUnder20.push(i + 1) //якщо менше за 20 то записуємо номер дня в визначений масив
           if (i < 5) allClientWorkDays += clientsToday //кіл-сть у робочі дні
           else allClientWeekendDays += clientsToday //кіл-сть у вихідні дні
         }
-        const middleAmountClientsPerWeek = allClientperWeek / 7
-        //цикл для визначення номерив днів мін і макс
+        const middleAmountClientsPerWeek = allClientperWeek / 7 // визначаємо середню кількість людей в день за неділю
+        //цикл для визначення номерив днів мін і макс в порівнянні з середнюю кількістью людей в день
         for (let i = 0; i < 7; i++) {
           if (arrayClientAmount[i] > middleAmountClientsPerWeek) daysMax.push(i + 1)
           else daysMin.push(i + 1)

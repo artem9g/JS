@@ -34,12 +34,12 @@
           if (element[0] === element[element.length - 1]) counterFirstEndEqual++
           if (element.length > 5) counterAbove5Letter++
         }
-        document.write(`Кількість Номерів починаючишся з А = ${counterA} <br>
-        Кількість Номерів де перша і остання літера однакові = ${counterFirstEndEqual} <br>
-        Кількість Номерів шо складаються з більше ніш 5 символів = ${counterAbove5Letter} <br>`)
+        return [counterA, counterFirstEndEqual, counterAbove5Letter]
       }
-      //Визиваємо ф-цію яка виводить дані, без return,не став писати окремо для виводу ф-цію бо мадло часу маю, в 1 завданні багато часу витратів
-      analysisArrayAutoNumbers(arrayAutoNumbers)
+      //Виводимо результати
+      document.write(`Кількість Номерів починаючишся з А = ${analysisArrayAutoNumbers(arrayAutoNumbers)[0]} <br>
+        Кількість Номерів де перша і остання літера однакові = ${analysisArrayAutoNumbers(arrayAutoNumbers)[1]} <br>
+        Кількість Номерів шо складаються з більше ніш 5 символів = ${analysisArrayAutoNumbers(arrayAutoNumbers)[2]} <br>`)
     </script>
   </body>
 </html>

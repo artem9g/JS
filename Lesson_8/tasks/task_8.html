@@ -19,23 +19,29 @@
     <div>
       <script>
         //1.Вводимо необхідні дані
-
         let arrayNumbers = [] // наприклад буде зберігаться 20 значень
-        let winSum = 0
+        let currentInput
+
+        //ф-ція для генераці чисел і додавння їх в массив з котрим потім працюємо
         function fillWinArray() {
           for (let i = 0; i < 20; i++) {
+            // наприклад буде зберігаться 20 значень
             arrayNumbers.push(Math.floor(Math.random() * 1001) - 500)
           }
         }
+        fillWinArray() // заповнюємо
+        //ф-ція  запиту і обробки
+        function getResult() {
+          let winSum = 0
+          do {
+            currentInput = parseInt(prompt(`Введіть число від 0 до ${arrayNumbers.length} `, 1))
+            if (currentInput >= 0 && currentInput < arrayNumbers.length) winSum += arrayNumbers[currentInput]
+            console.log(winSum)
+          } while (!isNaN(currentInput))
+          return winSum
+        }
 
-        fillWinArray()
-        let currentInput
-        do {
-          currentInput = parseInt(prompt(`Введіть число від 0 до 20 `, 1))
-          if (currentInput < 20) winSum += arrayNumbers[currentInput]
-          console.log(winSum)
-        } while (currentInput !== null)
-        document.write(`${winSum}`)
+        document.write(`Ваш резульат = ${getResult()}`)
       </script>
     </div>
   </body>

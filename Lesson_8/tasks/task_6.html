@@ -34,9 +34,9 @@
         for (let i = 0; i < arrayPrices.length; i++) {
           if (amountMoney > arrayPrices[i]) result.push(arrayProducts[i])
         }
-        console.log(result)
         return result
       }
+      //Виводимо результат
       document.write(`Користувач може дозволити себе = ${getEnoght(amountMoney, productsPrices, productsTitles)}.`)
     </script>
   </body>
