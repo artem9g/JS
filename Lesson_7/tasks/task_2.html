@@ -19,12 +19,11 @@
         if (dayNumber > 0 && dayNumber < 6) resultDay = "Робочий день"
         else if (dayNumber > 5 && dayNumber < 8) resultDay = "Вихідний день"
         else resultDay = "Невірні дані"
-        //3.виводимо результат
-        return document.write(`<p><b>Результат: ${resultDay}</b></p><ul>`)
+        return resultDay
       }
       document.write(`</div>`)
-      // Викликаємо ф-цію
-      detectWorkDay(inputNumberDay)
+      //3.виводимо результат
+      document.write(`<p><b>Результат: ${detectWorkDay(inputNumberDay)}</b></p><ul>`)
     </script>
   </body>
 </html>

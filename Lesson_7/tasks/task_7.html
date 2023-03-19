@@ -34,10 +34,10 @@
               break
             } else continue
           }
-          return document.write(`<img src="${result}">`)
+          return result
         }
-        //Викликаємо ф-цію
-        randomImage(img_1, img_2, img_3, img_4)
+        //3.виводимо результат
+        document.write(`<img src="${randomImage(img_1, img_2, img_3, img_4)}">`)
       </script>
     </div>
   </body>

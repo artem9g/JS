@@ -17,29 +17,22 @@
       const inputCentimeter = parseInt(prompt("Введіть кількість сантиметрів", ""))
       const inputKg = parseInt(prompt("Введіть кількість кілограмів", ""))
       const inputKm = parseInt(prompt("Введіть кількість кілометрів", ""))
-      //2.Декларуємо функції
-      //функція для ввиводу результату
-      function writeResult(resultFunction, type) {
-        return document.write(`${type} = ${resultFunction.toFixed(2)}</br>`)
-      }
+
       // 3 функції для перетворення:
       function getІnches(cm) {
-        let result = cm / 2.54
-        return writeResult(result, "Дюймів")
+        return cm / 2.54
       }
       function getPonds(kg) {
-        let result = kg * 2.20462
-        return writeResult(result, "Фунтів")
+        return kg * 2.20462
       }
       function getMiles(km) {
-        let result = km * 0.621371
-        return writeResult(result, "Милів")
+        return km * 0.621371
       }
 
-      // Визиваємо ф-цію
-      getІnches(inputCentimeter)
-      getPonds(inputKg)
-      getMiles(inputKm)
+      //3.виводимо результат
+      document.write(`${getІnches(inputCentimeter).toFixed(2)} - "Дюймів" <br>`)
+      document.write(`${getPonds(inputKg).toFixed(2)} - "Фунтів"<br>`)
+      document.write(`${getMiles(inputKm).toFixed(2)} - "Милів"<br>`)
     </script>
   </body>
 </html>

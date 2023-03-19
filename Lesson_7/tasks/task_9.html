@@ -22,12 +22,11 @@
         const temperatyre_2 = prompt("Введіть температуру за 2 день", "")
         const temperatyre_3 = prompt("Введіть температуру за 3 день", "")
         //Декларуємо ф-цію
-        function getAmountMinusTemperatyre(temp_1, temp_2, temp_3) {
+        function getAmountMinusTemperatyre() {
           let counter = 0
           for (let i = 0; i < arguments.length; i++) {
             // перевіряємо кожен аргумент чи він відємний і якщо так, то записуємо в лічільник
             if (arguments[i] < 0) counter += 1
-            else continue
           }
           return counter
         }

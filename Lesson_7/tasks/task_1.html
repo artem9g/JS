@@ -59,11 +59,10 @@
           default:
             resutSeason = "Невірні Данні"
         }
-        //3.виводимо результат
-        return document.write(`<p><b>Результат: ${resutSeason}</b></p><ul>`)
+        return resutSeason
       }
-      //Викликаємо функцію
-      detectMounth(inputNumberMounth)
+      //3.виводимо результат
+      document.write(`<p><b>Результат: ${detectMounth(inputNumberMounth)}</b></p><ul>`)
     </script>
   </body>
 </html>

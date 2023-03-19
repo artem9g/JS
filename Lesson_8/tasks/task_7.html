@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 7</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:</p>
+      <ol>
+        <li>за весь рік;</li>
+        <li>у першій половині року;</li>
+        <li>у другій половині року;</li>
+        <li>за літо;</li>
+        <li>за ІІ квартал;</li>
+        <li>за парні місяці (з парними номерами);</li>
+        <li>за місяці, які є початковими у сезоні (весна, літо, осінь, зима).</li>
+      </ol>
+    </div>
+
+    <h2><b>Результат: </b></h2>
+    <div>
+      <script>
+        //Вводимо необхідні данні
+        const arrayPayments = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        //декларуємо і описуємо ф-ці для обрахунків
+        function yearAllSum(array) {
+          let sumPayments = 0
+          for (let index = 0; index < array.length; index++) {
+            sumPayments += array[index]
+          }
+          return sumPayments
+        }
+        function firstHalfSum(array) {
+          let sumPayments = 0
+          for (let index = 0; index < 6; index++) {
+            sumPayments += array[index]
+          }
+          return sumPayments
+        }
+        function secondHalfSum(array) {
+          let sumPayments = 0
+          for (let index = 6; index < 12; index++) {
+            sumPayments += array[index]
+          }
+          return sumPayments
+        }
+        function summerSum(array) {
+          let sumPayments = 0
+          for (let index = 5; index < 8; index++) {
+            sumPayments += array[index]
+          }
+          return sumPayments
+        }
+        function secondQuarter(array) {
+          let sumPayments = 0
+          for (let index = 3; index < 6; index++) {
+            sumPayments += array[index]
+          }
+          return sumPayments
+        }
+        function sumEvenNumber(array) {
+          let sumPayments = 0
+          for (let index = 0; index < 12; index++) {
+            if ((index + 1) % 2 === 0) sumPayments += array[index]
+          }
+          return sumPayments
+        }
+        function sumFirstsMonthOfSeason(array) {
+          let sumPayments = 0
+          sumPayments = array[11] + array[2] + array[5] + array[8]
+          return sumPayments
+        }
+        //ф-ція для визову всіх ф-цій
+        function getResults(arrayIn) {
+          document.write(`
+        ${yearAllSum(arrayIn)}  за весь рік;<br><br>
+        ${firstHalfSum(arrayIn)} у першій половині року;<br>
+        ${secondHalfSum(arrayIn)} у другій половині року;<br>
+        ${summerSum(arrayIn)} за літо;<br>
+        ${secondQuarter(arrayIn)} за ІІ квартал;<br>
+        ${sumEvenNumber(arrayIn)} за парні місяці (з парними номерами);<br>
+        ${sumFirstsMonthOfSeason(arrayIn)}  за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+          `)
+        }
+        // визиваємо ф-цію для ввиду результату
+        getResults(arrayPayments)
+      </script>
+    </div>
+  </body>
+</html>

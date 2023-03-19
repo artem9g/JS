@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 8</h1>
+    <p>
+      <b>Завдання:</b>Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином
+      значеннями від -500 до 500). Надаючи користувачу можливість вибирати номери елементів (поки він не відмовиться). Знаходити
+      сумарний виграш.
+    </p>
+
+    <h2><b>Результат: </b></h2>
+    <div>
+      <script>
+        //1.Вводимо необхідні дані
+
+        let arrayNumbers = [] // наприклад буде зберігаться 20 значень
+        let winSum = 0
+        function fillWinArray() {
+          for (let i = 0; i < 20; i++) {
+            arrayNumbers.push(Math.floor(Math.random() * 1001) - 500)
+          }
+        }
+
+        fillWinArray()
+        let currentInput
+        do {
+          currentInput = parseInt(prompt(`Введіть число від 0 до 20 `, 1))
+          if (currentInput < 20) winSum += arrayNumbers[currentInput]
+          console.log(winSum)
+        } while (currentInput !== null)
+        document.write(`${winSum}`)
+      </script>
+    </div>
+  </body>
+</html>

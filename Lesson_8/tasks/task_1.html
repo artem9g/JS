@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 1</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>
+        Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься
+        (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
+      </p>
+    </div>
+    <script>
+      //1.Вводимо необхідні дані
+      const inputNumbersSubjects = parseInt(prompt("Введіть кількість предметів", ""))
+      let arrayScores = []
+      const bianryStudent = "двійочник"
+      const tripleStudent = "трійочник"
+      const goodGuyStudent = "хорошист"
+      const excellentStudent = "відмінник"
+      // Декларуємо функціЇ:
+      // 1) Функція для визначееня статусу учня
+      function checkStatusStudent(minScore) {
+        statusStudent = ""
+        switch (minScore) {
+          case 1:
+            statusStudent = bianryStudent
+            break
+          case 2:
+            statusStudent = bianryStudent
+            break
+          case 3:
+            statusStudent = tripleStudent
+            break
+          case 4:
+            statusStudent = goodGuyStudent
+            break
+          default:
+            statusStudent = excellentStudent
+        }
+        return statusStudent
+      }
+
+      //2)генеруємо рандомну оцінку по предмету
+      function getRandomScores() {
+        const randomNum = Math.floor(Math.random() * 5) + 1
+        return randomNum
+      }
+
+      //3)ф-ція для заповнювання массиву
+      function fillArraysScores(numbersSubjects, fillableArray) {
+        for (let i = 0; i < numbersSubjects; i++) {
+          fillableArray.push(getRandomScores())
+        }
+        console.log(fillableArray)
+        return fillableArray
+      }
+
+      //4)  перевірки
+      function checkStudentsScores(arrayScores) {
+        let avarageScores = 0
+        let minScores = 5 //перевіремо всі оцінки і по мінімальній зрозуміємо до кого відноситься учень
+        for (let index = 0; index < arrayScores.length; index++) {
+          const element = arrayScores[index]
+          // console.log(element)
+          avarageScores += element // cумуємо оцінки для визначення середньої оцінки
+          if (element < minScores) minScores = element
+        }
+        console.log(avarageScores)
+        console.log(avarageScores / arrayScores.length)
+        return [checkStatusStudent(minScores), avarageScores / arrayScores.length] //поверта
+      }
+
+      //5)Функція для виводу результату
+      function showResultStudent(rusults) {
+        document.write(`Студент - ${rusults[0]} <br>`)
+        document.write(`Середня оцінка студента - ${rusults[1]}`)
+      }
+
+      // Заповнюємо масив
+      arrayScores = fillArraysScores(inputNumbersSubjects, arrayScores)
+      //Викликаємо функцію   перевірки
+      const results = checkStudentsScores(arrayScores)
+      //Виводимо результат
+      showResultStudent(results)
+    </script>
+  </body>
+</html>

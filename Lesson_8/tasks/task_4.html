@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 4</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :</p>
+      <ul>
+        <li>починаються на букву «А»;</li>
+        <li>перша і остання літери співпадають;</li>
+        <li>складаються з більше ніш 5 символів;</li>
+      </ul>
+    </div>
+    <p>Приклад:"AT 8845 КT","AX 8745 KX","BA 2251 HA","BB 9842 HB","ВВ 8477 ВВ"</p>
+    <h2><b>Результат: </b></h2>
+    <script>
+      //1.Вводимо необхідні дані
+      const arrayAutoNumbers = ["AT 8845 КT", "AX 8745	KX", "BA 2251 HA", "BB	9842 HB", "ВВ 8477 ВВ"] // наприклад масив
+      //декларуємо і обписуємо ф-цію
+      function analysisArrayAutoNumbers(arrayInput) {
+        let counterA = 0
+        let counterFirstEndEqual = 0
+        let counterAbove5Letter = 0
+        for (let i = 0; i < arrayInput.length; i++) {
+          const element = arrayInput[i]
+          if (element[0] === "A") counterA++
+          if (element[0] === element[element.length - 1]) counterFirstEndEqual++
+          if (element.length > 5) counterAbove5Letter++
+        }
+        document.write(`Кількість Номерів починаючишся з А = ${counterA} <br>
+        Кількість Номерів де перша і остання літера однакові = ${counterFirstEndEqual} <br>
+        Кількість Номерів шо складаються з більше ніш 5 символів = ${counterAbove5Letter} <br>`)
+      }
+      //Визиваємо ф-цію яка виводить дані, без return,не став писати окремо для виводу ф-цію бо мадло часу маю, в 1 завданні багато часу витратів
+      analysisArrayAutoNumbers(arrayAutoNumbers)
+    </script>
+  </body>
+</html>

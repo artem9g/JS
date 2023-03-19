@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 5</h1>
+    <p><b>Завдання:</b>   
+      <p>Дано послідовність оцінок учня. Підрахувати кількість:</p>
+        <ul>
+          <li>двійок;</li>
+          <li>кількість хороших оцінок (добре, відмінно);</li>
+          <li>кількість оцінок, які нижче середнього.</li>
+        </ul></p>
+    <h2><b>Результат: </b></h2>
+
+    <script>
+      //1.Вводимо необхідні дані
+        const scoresArray = [2,3,4,5,4,2,5,2,2,2]
+        //декларуємо і обписуємо ф-цію
+        function analysisScores(arrayScores) {
+        let conter2=0
+        let goodScoresAmount=0
+        let underMiddleScoresAmount=0
+        let sumScores=0
+        let middleScore 
+        
+        for (let i = 0; i < arrayScores.length; i++) {
+          const score = arrayScores[i];
+          sumScores+=score
+          if (score>3)goodScoresAmount++
+          if (score<3)conter2++
+        }
+        middleScore= sumScores/arrayScores.length // вирухавили середню і далі рахумо в циклі кількість ниєче середньго
+        console.log(middleScore)
+                for (let i = 0; i < arrayScores.length; i++) {
+                    if(arrayScores[i]<middleScore)underMiddleScoresAmount++
+        }
+              return  document.write(`Кількість двійок= ${conter2} <br>
+        Кількість хороших оцінок (добре, відмінно) = ${goodScoresAmount} <br>
+        кількість оцінок, які нижче середнього = ${underMiddleScoresAmount} <br>`) 
+        }
+        // визиваємо ф-цію яка вираховує результат
+        analysisScores(scoresArray)
+    </script>
+  </body>
+</html>

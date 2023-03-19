@@ -21,31 +21,20 @@
       const inputNumber3 = parseInt(prompt("Введіть трете число", ""))
       //2.Декларуємо функції
       function threeOperation(a, b, c) {
-        let odd = 0
+        let positiveNumber = 0
         let even = 0
         let numberOver100 = 0
-        //
-        if (a % 2 === 0) {
-          even++
-        } else odd++
-        if (a > 100) numberOver100++
-
-        if (b % 2 === 0) {
-          even++
-        } else odd++
-        if (b > 100) numberOver100++
-
-        if (c % 2 === 0) {
-          even++
-        } else odd++
-        if (c > 100) numberOver100++
-        //
-        return document.write(`Кількість парних = ${even}<br>
-        Кількість додатних = ${odd} <br>
-        Кількість більших за 100 = ${numberOver100} <br>`)
+        for (let i = 0; i < arguments.length; i++) {
+          if (arguments[i] % 2 === 0 || arguments[i] === 0) even++
+          if (arguments[i] > 0) positiveNumber++
+          if (arguments[i] > 100) numberOver100++
+        }
+        return [even, positiveNumber, numberOver100]
       }
-      // Визиваємо ф-цію
-      threeOperation(inputNumber1, inputNumber2, inputNumber3)
+      //3.виводимо результат
+      document.write(`Кількість парних = ${threeOperation(inputNumber1, inputNumber2, inputNumber3)[0]}<br>
+        Кількість додатних = ${threeOperation(inputNumber1, inputNumber2, inputNumber3)[1]} <br>
+        Кількість більших за 100 = ${threeOperation(inputNumber1, inputNumber2, inputNumber3)[2]} <br>`)
     </script>
   </body>
 </html>

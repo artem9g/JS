@@ -23,10 +23,10 @@
         const temperatyre_3 = parseInt(prompt("Введіть температуру за 3 день", ""))
 
         //Декларуємо ф-цію
-        function getAveragePlusTemperature(temp_1, temp_2, temp_3) {
+        function getAveragePlusTemperature() {
           let sumPlusTemperature = 0
           let counter = 0
-          for (let i = 0; i < 3; i++) {
+          for (let i = 0; i < arguments.length; i++) {
             // перевіряємо кожен аргумент чи він відємний і якщо так, то записуємо в лічільник
             if (arguments[i] > 0) {
               counter += 1

@@ -22,35 +22,26 @@
       const inputNumber4 = parseInt(prompt("Введіть четверте число", ""))
       //2. Декларуємо функції
       function sum(a, b, c, d) {
-        let result
-        result = a + b + c + d
-        return document.write(`Сумма = ${result} <br>`)
+        return a + b + c + d
       }
       function multiply(a, b, c, d) {
-        let result
-        result = a * b * c * d
-        return document.write(`Добуток = ${result}<br>`)
+        return a * b * c * d
       }
       function middleArifmetic(a, b, c, d) {
-        let result
-        result = (a + b + c + d) / 4
-        return document.write(`Середнє арифметичне = ${result}<br>`)
+        return (a + b + c + d) / 4
       }
       function minInt(a, b, c, d) {
         let result = a
         if (b < result) result = b
-        else if (c < result) result = c
-        else if (d < result) result = d
-        else result = a
-        return document.write(`Мінімальне
-      значення = ${result}<br>`)
+        if (c < result) result = c
+        if (d < result) result = d
+        return result
       }
-
-      // Визиваємо ф-цію
-      sum(inputNumber1, inputNumber2, inputNumber3, inputNumber4)
-      multiply(inputNumber1, inputNumber2, inputNumber3, inputNumber4)
-      middleArifmetic(inputNumber1, inputNumber2, inputNumber3, inputNumber4)
-      minInt(inputNumber1, inputNumber2, inputNumber3, inputNumber4)
+      //3.виводимо результат
+      document.write(`${sum(inputNumber1, inputNumber2, inputNumber3, inputNumber4)}<br>`)
+      document.write(`${multiply(inputNumber1, inputNumber2, inputNumber3, inputNumber4)}<br>`)
+      document.write(`${middleArifmetic(inputNumber1, inputNumber2, inputNumber3, inputNumber4)}<br>`)
+      document.write(`${minInt(inputNumber1, inputNumber2, inputNumber3, inputNumber4)}<br>`)
     </script>
   </body>
 </html>
