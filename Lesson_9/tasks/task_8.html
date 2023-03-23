@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 9</title>
+  </head>
+
+  <body>
+    <h1>Задача 8</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»</p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      const autoNumbers = ["АА6830ВУ", "НР5412НН", "АО9874УУ", "НА3232ВА"]
+      //формуємо новий масив
+      const autoNumbersStartA = autoNumbers.filter((number) => number[0] === "А")
+      //Виводимо результат
+      document.write(autoNumbersStartA)
+    </script>
+  </body>
+</html>

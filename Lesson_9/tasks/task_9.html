@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 9</title>
+  </head>
+
+  <body>
+    <h1>Задача 9</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>Дано масив імен. Сформувати масив з перших літер цих імен.</p>
+    </div>
+    <script>
+      //1.Вводимо необхідні дані
+      const arrNames = ["Arten", "Ivan", "Olga", "Masha"]
+      //формуємо новий масив
+      const newArrayFirstLiterNames = arrNames.map((name) => name[0])
+      //Виводимо результат
+      document.write(newArrayFirstLiterNames)
+    </script>
+  </body>
+</html>

@@ -23,40 +23,23 @@
     <script>
       //1.Вводимо необхідні дані
       const arrayAutoNumbers = ["AT 8845 КT", "AX 8745	KX", "BA 2251 HA", "BB	9842 HB", "ВВ 8477 ВВ"] // наприклад масив
-
-      //декларуємо і обписуємо ф-ції
-
-      function counterA(arrayInput) {
-        let resultA = 0
+      //декларуємо і обписуємо ф-цію
+      function analysisArrayAutoNumbers(arrayInput) {
+        let counterA = 0
+        let counterFirstEndEqual = 0
+        let counterAbove5Letter = 0
         for (let i = 0; i < arrayInput.length; i++) {
           const element = arrayInput[i]
-          if (element[0] === "A") resultA++
+          if (element[0] === "A") counterA++
+          if (element[0] === element[element.length - 1]) counterFirstEndEqual++
+          if (element.length > 5) counterAbove5Letter++
         }
-        return resultA
+        return [counterA, counterFirstEndEqual, counterAbove5Letter]
       }
-
-      function counterFirstEndEqual(arrayInput) {
-        let resultFirsnEndEqual = 0
-        for (let i = 0; i < arrayInput.length; i++) {
-          const element = arrayInput[i]
-          if (element[0] === element[element.length - 1]) resultFirsnEndEqual++
-        }
-        return resultFirsnEndEqual
-      }
-
-      function counterAbove5Letter(arrayInput) {
-        let letterAbove5 = 0
-        for (let i = 0; i < arrayInput.length; i++) {
-          const element = arrayInput[i]
-          if (element.length > 5) letterAbove5++
-        }
-        return letterAbove5
-      }
-
       //Виводимо результати
-      document.write(`Кількість Номерів починаючишся з А = ${counterA(arrayAutoNumbers)} <br>
-        Кількість Номерів де перша і остання літера однакові = ${counterFirstEndEqual(arrayAutoNumbers)} <br>
-        Кількість Номерів шо складаються з більше ніш 5 символів = ${counterAbove5Letter(arrayAutoNumbers)} <br>`)
+      document.write(`Кількість Номерів починаючишся з А = ${analysisArrayAutoNumbers(arrayAutoNumbers)[0]} <br>
+        Кількість Номерів де перша і остання літера однакові = ${analysisArrayAutoNumbers(arrayAutoNumbers)[1]} <br>
+        Кількість Номерів шо складаються з більше ніш 5 символів = ${analysisArrayAutoNumbers(arrayAutoNumbers)[2]} <br>`)
     </script>
   </body>
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 9</title>
+  </head>
+
+  <body>
+    <h1>Задача 10</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.</p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      const arrNumbers = [100, 10, 20, 500, 1000, 0, 40]
+      //формуємо новий масив
+      const arrTaxPaid = arrNumbers.map((number) => number * 0.2)
+      //Виводимо результат
+      document.write(arrTaxPaid)
+    </script>
+  </body>
+</html>

@@ -20,25 +20,29 @@
       //1.Вводимо необхідні дані
       const inputNumbersSubjects = parseInt(prompt("Введіть кількість предметів", ""))
       let arrayScores = []
+      const bianryStudent = "двійочник"
+      const tripleStudent = "трійочник"
+      const goodGuyStudent = "хорошист"
+      const excellentStudent = "відмінник"
       // Декларуємо функціЇ:
       // 1) Функція для визначееня статусу учня
       function checkStatusStudent(minScore) {
         statusStudent = ""
         switch (minScore) {
           case 1:
-            statusStudent = "двійочник"
+            statusStudent = bianryStudent
             break
           case 2:
-            statusStudent = "двійочник"
+            statusStudent = bianryStudent
             break
           case 3:
-            statusStudent = "трійочник"
+            statusStudent = tripleStudent
             break
           case 4:
-            statusStudent = "хорошист"
+            statusStudent = goodGuyStudent
             break
           default:
-            statusStudent = "відмінник"
+            statusStudent = excellentStudent
         }
         return statusStudent
       }

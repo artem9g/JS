@@ -17,72 +17,98 @@
       <li>загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.</li>
     </ul>
     <script>
-      let arrayClientsPerWeek = []
+      //генеруємо масив и запвнюемо его
+      const resultAmountClientsForWeek = fillArraysScores()
+      //находимо середню кількість за всі дні, для подальших розрахунків
+      const middleAmountClientsPerWeek = Math.round(middleClients(resultAmountClientsForWeek))
       //генеруємо кількість відвідувачів за день, наприклад максимум 200
       function getRandomScores() {
         const randomNum = Math.floor(Math.random() * 201)
-        console.log(randomNum)
         return randomNum
       }
       //ф-ція для заповнювання массиву, 7 днів
-      function fillArraysScores(fillableArray) {
+      function fillArraysScores() {
+        let fillableArray = []
         for (let i = 0; i < 7; i++) {
           fillableArray.push(getRandomScores())
         }
         return fillableArray
       }
-      //функція яка 1 раз аналізує дані і робить масив з результатами
-      function analysisWeekPerWeek(arrayClientAmount) {
-        let daysUnder20 = []
-        let daysMin = []
-        let daysMax = []
-        let allClientWorkDays = 0
-        let allClientWeekendDays = 0
-        let allClientperWeek = 0
-        for (let i = 0; i < arrayClientAmount.length; i++) {
-          //анализужмо по дням
-          const clientsToday = arrayClientAmount[i]
-          allClientperWeek += clientsToday //для підрахунку загального потоку, щоб вирахуватисреденб потім дні мін і макс
-          if (clientsToday < 20) daysUnder20.push(i + 1) //якщо менше за 20 то записуємо номер дня в визначений масив
-          if (i < 5) allClientWorkDays += clientsToday //кіл-сть у робочі дні
-          else allClientWeekendDays += clientsToday //кіл-сть у вихідні дні
-        }
-        const middleAmountClientsPerWeek = allClientperWeek / 7 // визначаємо середню кількість людей в день за неділю
-        //цикл для визначення номерив днів мін і макс в порівнянні з середнюю кількістью людей в день
-        for (let i = 0; i < 7; i++) {
-          if (arrayClientAmount[i] > middleAmountClientsPerWeek) daysMax.push(i + 1)
-          else daysMin.push(i + 1)
-        }
-        return [daysUnder20, daysMin, daysMax, allClientWorkDays, allClientWeekendDays]
-      }
 
-      //деклерування і опис ф-цій виводу
+      //..........................деклерування і опис ф-цій обрахування
+
+      //дні коли менше 20
       function getDaysUnder20(array) {
-        return document.write(`Номера днів коли кліентів було менше за 20:${array[0]} <br>`)
+        let daysUnder20 = []
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] < 20) daysUnder20.push(i + 1)
+        }
+        return daysUnder20
       }
-      function getDaysMin(array) {
-        return document.write(`Номера днів коли кліентів було меншше середнього:${array[1]}<br>`)
+
+      //дні менше середнього
+      function getDaysMin(array, middle) {
+        let daysMin = []
+        for (let i = 0; i < 7; i++) {
+          if (array[i] < middle) daysMin.push(i + 1)
+        }
+        return daysMin
       }
-      function getDaysMax(array) {
-        return document.write(`Номера днів коли кліентів було було більше середнього:${array[2]}<br>`)
+
+      //дні більше середнього
+      function getDaysMax(array, middle) {
+        let daysMax = []
+        for (let i = 0; i < 7; i++) {
+          if (array[i] > middle) daysMax.push(i + 1)
+        }
+        return daysMax
       }
+
+      //кіл-сть у робочі дні
       function getallClientWorkDays(array) {
-        return document.write(`Кількість кліентів в робочі дні:${array[3]}<br>`)
+        let allClientWorkDays = 0
+        for (let i = 0; i < array.length; i++) {
+          const clientsToday = array[i]
+          if (i < 5) allClientWorkDays += clientsToday
+        }
+        return allClientWorkDays
       }
+
+      //кіл-сть у вихідні дні
       function allClientWeekendDays(array) {
-        return document.write(`Кількість кліентів в визідні дні:${array[4]}<br>`)
+        let allClientWeekendDays = 0
+        for (let i = 0; i < array.length; i++) {
+          const clientsToday = array[i]
+          if (i > 4) allClientWeekendDays += clientsToday
+        }
+        return allClientWeekendDays
       }
 
-      //заповнюємо масив і аналізуємо
-      const resultAmountClientsForWeek = fillArraysScores(arrayClientsPerWeek)
-      const resultAnalisisWeek = analysisWeekPerWeek(resultAmountClientsForWeek)
+      //середня кіл-сть загалом
+      function middleClients(array) {
+        let allClient = 0
+        for (let i = 0; i < array.length; i++) {
+          allClient += array[i]
+        }
+        return allClient / 7
+      }
 
-      //виводимо результат, зробив в окремих ф-ціях
-      getDaysUnder20(resultAnalisisWeek)
-      getDaysMin(resultAnalisisWeek)
-      getDaysMax(resultAnalisisWeek)
-      getallClientWorkDays(resultAnalisisWeek)
-      allClientWeekendDays(resultAnalisisWeek)
+      //виводимо результат
+      document.write(`Номера днів коли кліентів було менше за 20:${getDaysUnder20(resultAmountClientsForWeek)} <br>`)
+      document.write(
+        `Номера днів коли кліентів було меншше середнього:${getDaysMin(
+          resultAmountClientsForWeek,
+          middleAmountClientsPerWeek
+        )}<br>`
+      )
+      document.write(
+        `Номера днів коли кліентів було було більше середнього:${getDaysMax(
+          resultAmountClientsForWeek,
+          middleAmountClientsPerWeek
+        )}<br>`
+      )
+      document.write(`Кількість кліентів в робочі дні:${getallClientWorkDays(resultAmountClientsForWeek)}<br>`)
+      document.write(`Кількість кліентів в вихідні дні:${allClientWeekendDays(resultAmountClientsForWeek)}<br>`)
     </script>
   </body>
 </html>

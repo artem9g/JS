@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 9</title>
+  </head>
+
+  <body>
+    <h1>Задача 6</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2</p>
+    </div>
+    <script>
+      //1.Вводимо необхідні дані
+      const arrayNumbers = [10, 2, 50, 10, 0, -20, -100, -99, 1]
+      // через map
+      // const newArray = arrayNumbers.map((number) => (number > arrayNumbers[0] ? number * 100 : number))
+
+      //через forEach
+      arrayNumbers.forEach((number, index, baseArrRef) => {
+        if (number > arrayNumbers[0]) baseArrRef[index] = number * 100
+      })
+
+      //Виводимо результат
+      // document.write(newArray)  // через map
+      document.write(arrayNumbers) //через forEach
+    </script>
+  </body>
+</html>

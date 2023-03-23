@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 5</h1>
+    <p><b>Завдання:</b>   
+      <p>Дано послідовність оцінок учня. Підрахувати кількість:</p>
+        <ul>
+          <li>двійок;</li>
+          <li>кількість хороших оцінок (добре, відмінно);</li>
+          <li>кількість оцінок, які нижче середнього.</li>
+        </ul></p>
+    <h2><b>Результат: </b></h2>
+
+    <script>
+      //1.Вводимо необхідні дані
+        const scoresArray = [2,3,4,5,4,2,5,2,2,2]
+        //декларуємо і обписуємо ф-цію
+        function analysisScores(arrayScores) {
+        let conter2=0
+        let goodScoresAmount=0
+        let underMiddleScoresAmount=0
+        let sumScores=0
+        let middleScore =0
+        for (let i = 0; i < arrayScores.length; i++) {
+          const score = arrayScores[i];
+          sumScores+=score
+          if (score>3)goodScoresAmount++ //рахуємо (добре, відмінно)
+          if (score<3)conter2++ //рахуємо двіийки, прро тройки речі не були, тому їх пропускаю а далі працюж над середеньою оцінкую, або я не так зрозумів))
+        }
+        middleScore= sumScores/arrayScores.length // вирухавили середню і далі рахуємо в циклі кількість нижче середньго
+        // console.log(middleScore)
+                for (let i = 0; i < arrayScores.length; i++) {
+                    if(arrayScores[i]<middleScore)underMiddleScoresAmount++
+        }
+              return  [conter2,goodScoresAmount,underMiddleScoresAmount]
+}       
+// подумав що краще 1 раз визвати ф-цію і записати результат ніж 3 рази визвати ф-цію і зветатися по індексу - наприклад: analysisScores(scoresArray)[0]-щоб отримати кількість двійок
+        const resultScores = analysisScores(scoresArray)
+        document.write(`${scoresArray} - Масив <br>`) 
+        // визиваємо ф-цію яка вираховує результат 
+        document.write(`Кількість двійок= ${analysisScores(scoresArray)[0]} <br>
+        Кількість хороших оцінок (добре, відмінно) = ${analysisScores(scoresArray)[1]} <br>
+        кількість оцінок, які нижче середнього = ${analysisScores(scoresArray)[2]} <br>`) 
+    </script>
+  </body>
+</html>

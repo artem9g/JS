@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 9</title>
+  </head>
+
+  <body>
+    <h1>Задача 4</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>Дано масив елементів. Вивести на екран елементи, що більші за 100</p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      const arrayNumbers = [100, 99, 204, 9963, 999, 99, 100, 0, -20, -100, -99, 1]
+      //Виконуємо операцію
+      // const arrayNumberOver100 = arrayNumbers.filter((number) => number > 100) -через фільтр
+
+      //через for of
+      function numbersOver100(array) {
+        let arrayNumberOver100 = []
+        for (let number of array) {
+          if (number > 100) arrayNumberOver100.push(number)
+        }
+        return arrayNumberOver100
+      }
+      //Виводимо результат
+      document.write(numbersOver100(arrayNumbers))
+      //document.write(arrayNumberOver100)  -через фільтр
+    </script>
+  </body>
+</html>

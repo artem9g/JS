@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 9</title>
+  </head>
+
+  <body>
+    <h1>Задача 7</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.</p>
+    </div>
+    <script>
+      //1.Вводимо необхідні дані
+      const arrayPrices = [1100, 2, 50, 150, 0, 200, 1452, 1001]
+      //якщо треба внести змінити  масив то використаю foreach/ for of, а map коли треба новий масив
+
+      arrayPrices.forEach((number, index, baseArrRef) => {
+        if (number > 1000) baseArrRef[index] = (number * 0.7).toFixed(0)
+      })
+
+      //Виводимо результат
+      document.write(arrayPrices)
+    </script>
+  </body>
+</html>

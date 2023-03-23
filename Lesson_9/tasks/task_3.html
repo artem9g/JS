@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 9</title>
+  </head>
+
+  <body>
+    <h1>Задача 3</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>
+        Користувач вводить кількість елементів. Створити масив, у якому перші 5 елементів заповнені 1-цями, а інші до кінця масиву
+        заповнені 7-ками.
+      </p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      const customersNumberZeros = parseInt(prompt("Введіть кількість елементів масиву:"))
+      //Виконуємо операцію
+      const middleLength = Math.round(customersNumberZeros / 2)
+      const arrayZeros = new Array(customersNumberZeros).fill(1, 0, 5).fill(7, 5)
+      //Виводимо результат
+      document.write(arrayZeros)
+    </script>
+  </body>
+</html>

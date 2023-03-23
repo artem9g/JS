@@ -21,33 +21,51 @@
     <script>
       //1.Вводимо необхідні дані
         const scoresArray = [2,3,4,5,4,2,5,2,2,2]
-        //декларуємо і обписуємо ф-цію
-        function analysisScores(arrayScores) {
-        let conter2=0
-        let goodScoresAmount=0
+        const midleScore = getMidleScore (scoresArray)
+
+        //декларуємо і обписуємо ф-ції
+
+        function getMidleScore (array){
+        let sumScores =0
+        for (let i = 0; i < array.length; i++) {
+          sumScores+=array[i]
+        }
+        return sumScores/array.length
+        }
+
+        //ф-ція яка рахує двійки
+        function getCounter2(array){  
+          let conter2=0
+          for (let i = 0; i < array.length; i++) {
+          if (array[i]<3)conter2++  }
+          return conter2
+        }
+
+        //ф-ція яка рахує кількість хороших оцінок (добре, відмінно)
+        function getGoodScoresAmount(array){
+          let goodScoresAmount=0
+          for (let i = 0; i < array.length; i++) {
+          if (array[i]>3)goodScoresAmount++ //рахуємо (добре, відмінно)
+        }
+          return goodScoresAmount
+        }
+
+      //кількість оцінок, які нижче середнього.
+      function getUnderMiddleScoresAmount(array,middle) {
         let underMiddleScoresAmount=0
-        let sumScores=0
-        let middleScore =0
-        for (let i = 0; i < arrayScores.length; i++) {
-          const score = arrayScores[i];
-          sumScores+=score
-          if (score>3)goodScoresAmount++ //рахуємо (добре, відмінно)
-          if (score<3)conter2++ //рахуємо двіийки, прро тройки речі не були, тому їх пропускаю а далі працюж над середеньою оцінкую, або я не так зрозумів))
+        for (let i = 0; i < array.length; i++) {
+        if(array[i]<middle)underMiddleScoresAmount++
         }
-        middleScore= sumScores/arrayScores.length // вирухавили середню і далі рахуємо в циклі кількість нижче середньго
-        // console.log(middleScore)
-                for (let i = 0; i < arrayScores.length; i++) {
-                    if(arrayScores[i]<middleScore)underMiddleScoresAmount++
-        }
-              return  [conter2,goodScoresAmount,underMiddleScoresAmount]
-}       
-// подумав що краще 1 раз визвати ф-цію і записати результат ніж 3 рази визвати ф-цію і зветатися по індексу - наприклад: analysisScores(scoresArray)[0]-щоб отримати кількість двійок
-        const resultScores = analysisScores(scoresArray)
+        return  underMiddleScoresAmount
+      }       
+
+      //Виводимо результат
         document.write(`${scoresArray} - Масив <br>`) 
+            document.write(`${midleScore} - середня оцінка<br>`) 
         // визиваємо ф-цію яка вираховує результат 
-        document.write(`Кількість двійок= ${analysisScores(scoresArray)[0]} <br>
-        Кількість хороших оцінок (добре, відмінно) = ${analysisScores(scoresArray)[1]} <br>
-        кількість оцінок, які нижче середнього = ${analysisScores(scoresArray)[2]} <br>`) 
+        document.write(`Кількість двійок= ${getCounter2(scoresArray)} <br>
+        Кількість хороших оцінок (добре, відмінно) = ${getGoodScoresAmount(scoresArray)} <br>
+        кількість оцінок, які нижче середнього = ${getUnderMiddleScoresAmount(scoresArray,midleScore)} <br>`) 
     </script>
   </body>
 </html>

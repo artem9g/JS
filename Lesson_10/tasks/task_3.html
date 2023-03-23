@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 3</h1>
+    <p><b>Завдання:</b> Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».</p>
+    <h2><b>Результат: </b></h2>
+    <script>
+      // отриманий масив
+      const arrayStudents = ["Вася", "Петя", "Іван", "Маша", "Артем", "Віка", "Іван"]
+      // ф-ція яка прогоняє масив і рахує к-сть Іван і повертає кільсть
+      function getAmountIvan(array) {
+        let counterIvan = 0
+        for (let i = 0; i < array.length; i++) {
+          const currentName = array[i]
+          if (currentName === "Іван") counterIvan++
+        }
+        return counterIvan
+      }
+      //Виводимо результат
+      document.write(`Кількість Іванів в масині = ${getAmountIvan(arrayStudents)}.`)
+    </script>
+  </body>
+</html>

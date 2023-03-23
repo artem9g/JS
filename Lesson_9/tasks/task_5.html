@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 9</title>
+  </head>
+
+  <body>
+    <h1>Задача 5</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>Дано масив елементів. Знайти добуток додатних елементів</p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      const arrayNumbers = [1, 2, 5, 10, 0, -20, -100, -99, 1]
+
+      function multiplePossitive(array) {
+        let muliplySum = 1
+        for (let number of arrayNumbers) {
+          if (number > 0) {
+            muliplySum = muliplySum * number
+          }
+        }
+        return muliplySum
+      }
+      //Виконуємо операцію
+      //Виводимо результат
+      document.write(multiplePossitive(arrayNumbers))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 9</title>
+  </head>
+
+  <body>
+    <h1>Задача 1</h1>
+    <div>
+      <b>Завдання:</b>
+      <p>
+        Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості елементів заповнених нулями.
+      </p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      const customersNumberZeros = parseInt(prompt("Введіть кількість елементів масиву:"))
+      //Виконуємо операцію
+      const arrayZeros = new Array(customersNumberZeros).fill(0)
+      //Виводимо результат
+      document.write(arrayZeros)
+    </script>
+  </body>
+</html>

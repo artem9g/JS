@@ -28,78 +28,38 @@
       <script>
         //Вводимо необхідні данні
         const arrayPayments = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        //декларуємо і описуємо ф-ці для обрахунків
-        //за весь рік;
-        function yearAllSum(array) {
+
+        //декларуємо і описуємо ф-цію для обрахунків з диапазоном
+        function getResults(array, startIndex, endIndex) {
           let sumPayments = 0
-          for (let index = 0; index < array.length; index++) {
+          for (let index = startIndex - 1; index < endIndex; index++) {
             sumPayments += array[index]
           }
           return sumPayments
         }
-        //у першій половині року;
-        function firstHalfSum(array) {
-          let sumPayments = 0
-          for (let index = 0; index < 6; index++) {
-            sumPayments += array[index]
-          }
-          return sumPayments
-        }
-        //у другій половині року;
-        function secondHalfSum(array) {
-          let sumPayments = 0
-          for (let index = 6; index < 12; index++) {
-            sumPayments += array[index]
-          }
-          return sumPayments
-        }
-        //за літо;
-        function summerSum(array) {
-          let sumPayments = 0
-          for (let index = 5; index < 8; index++) {
-            sumPayments += array[index]
-          }
-          return sumPayments
-        }
-        //за ІІ квартал;
-        function secondQuarter(array) {
-          let sumPayments = 0
-          for (let index = 3; index < 6; index++) {
-            sumPayments += array[index]
-          }
-          return sumPayments
-        }
-        //за парні місяці (з парними номерами);
-        function sumEvenNumber(array) {
-          let sumPayments = 0
+
+        //декларуємо і описуємо ф-цію  1)за парні місяці-якщо цифра 2; 2)І якщо цифра 3 то є початковими у сезоні (весна, літо, осінь, зима).
+        function getEvenOrStartSeason(array, step) {
+          let sumCheckStep = 0
           for (let index = 0; index < 12; index++) {
-            if ((index + 1) % 2 === 0) sumPayments += array[index]
+            console.log(index + 1)
+            if ((index + 1) % step === 0) sumCheckStep += array[index]
           }
-          return sumPayments
+          return sumCheckStep
         }
-        //за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
-        function sumFirstsMonthOfSeason(array) {
-          let sumPayments = 0
-          sumPayments = array[11] + array[2] + array[5] + array[8]
-          return sumPayments
-        }
-        //ф-ція для визову всіх ф-цій і відображення результату
-        function getResults(arrayIn) {
-          document.write(`
-        ${yearAllSum(arrayIn)}  за весь рік;<br> 
-        ${firstHalfSum(arrayIn)} у першій половині року;<br>
-        ${secondHalfSum(arrayIn)} у другій половині року;<br>
-        ${summerSum(arrayIn)} за літо;<br>
-        ${secondQuarter(arrayIn)} за ІІ квартал;<br>
-        ${sumEvenNumber(arrayIn)} за парні місяці (з парними номерами);<br>
-        ${sumFirstsMonthOfSeason(arrayIn)}  за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+
+        // document.write(`${arrayPayments}- массив <br> <br> `)
+
+        // відображення результату
+        document.write(`
+        ${getResults(arrayPayments, 1, 12)}  за весь рік;<br>
+        ${getResults(arrayPayments, 1, 6)} у першій половині року;<br>
+        ${getResults(arrayPayments, 7, 12)} у другій половині року;<br>
+        ${getResults(arrayPayments, 5, 8)} за літо;<br>
+        ${getResults(arrayPayments, 4, 7)} за ІІ квартал;<br>
+        ${getEvenOrStartSeason(arrayPayments, 2)} за парні місяці (з парними номерами);<br>
+        ${getEvenOrStartSeason(arrayPayments, 3)}  за місяці, які є початковими у сезоні (весна, літо, осінь, зима)
           `)
-        }
-
-        document.write(`${arrayPayments}- массив <br> <br> `)
-
-        // визиваємо ф-цію для виводу результату
-        getResults(arrayPayments)
       </script>
     </div>
   </body>
