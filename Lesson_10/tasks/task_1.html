@@ -4,91 +4,137 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <title>Lesson 7</title>
+    <title>Lesson 10</title>
   </head>
 
   <body>
     <h1>Задача 1</h1>
     <div>
       <b>Завдання:</b>
-      <p>
-        Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься
-        (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
-      </p>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h3>Задача 1</h3>
+      <p>При розв’язанні задач намагайтесь використовувати відповідні методи (map, filter, reduce,…) всюди, де це можливо</p>
+      <p><b>Задача. </b>Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)</p>
+      <ol>
+        <li>Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.</li>
+        <li>Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.</li>
+        <li>Сформувати список з тих цін, які більші за попереднє значення</li>
+        <li>Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального</li>
+        <li>Підрахувати кількість змін цін</li>
+        <li>Визначити, чи є ціна, що менше 1000</li>
+        <li>Визначати, чи усі ціни більше за 1000</li>
+        <li>Підрахувати кількість цін, що більше за 1000</li>
+        <li>Підрахувати суму цін, що більше за 1000</li>
+        <li>Знайти першу ціну, що більше за 1000</li>
+        <li>Знайти індекс першої ціни, що більше за 1000</li>
+        <li>Знайти останню ціну, що більше за 1000</li>
+        <li>Знайти індекс останньої ціни, що більше за 1000</li>
+      </ol>
     </div>
     <script>
-      //1.Вводимо необхідні дані
-      const inputNumbersSubjects = parseInt(prompt("Введіть кількість предметів", ""))
-      let arrayScores = []
-      const bianryStudent = "двійочник"
-      const tripleStudent = "трійочник"
-      const goodGuyStudent = "хорошист"
-      const excellentStudent = "відмінник"
-      // Декларуємо функціЇ:
-      // 1) Функція для визначееня статусу учня
-      function checkStatusStudent(minScore) {
-        statusStudent = ""
-        switch (minScore) {
-          case 1:
-            statusStudent = bianryStudent
-            break
-          case 2:
-            statusStudent = bianryStudent
-            break
-          case 3:
-            statusStudent = tripleStudent
-            break
-          case 4:
-            statusStudent = goodGuyStudent
-            break
-          default:
-            statusStudent = excellentStudent
+      //Вводимо необхідні дані
+      const arrayHistory = generatorRandom(5, 1, 10000)
+      function generatorRandom(period, min, max) {
+        let arrayGenerated = []
+        for (let i = 0; i < period; i++) {
+          arrayGenerated.push(Math.floor(Math.random() * (max - min + 1) + min))
         }
-        return statusStudent
+        return arrayGenerated
+      }
+      document.write(`Сам масив: <b>${arrayHistory}<br></b>`)
+
+      //1) Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
+      const arrayOver1000 = arrayHistory.filter((price) => price > 1000)
+      // Виводимо резульатт
+      document.write(`1.масив, у якому є тільки ті, що більші за 1000 грн.= ${arrayOver1000} <br>`)
+
+      //2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
+
+      // const arrayNumbersElementOver1000 = arrayHistory
+      //   .map((price, index) => {
+      //     if (price > 1000) return index
+      //   })
+      //   .filter((element) => element !== undefined)
+      //або
+      const arrayNumbersElementOver1000 = arrayHistory.reduce((acumArray, element, index) => {
+        if (element > 1000) acumArray.push(index)
+        return acumArray
+      }, [])
+
+      // Виводимо резульатт
+      document.write(`2.масив,  у якому є номери тільки тих, що більші за 1000 грн. = ${arrayNumbersElementOver1000}<br>`)
+
+      //3) Сформувати список з тих цін, які більші за попереднє значення
+      const arrayNumberBiggerNumberBefore = getArrayNumberBiggerNumberBefore(arrayHistory)
+      // function getArrayNumberBiggerNumberBefore(arrayHistory) {
+      //   return arrayHistory
+      //     .map((price, index, baseArrRef) => {
+      //       if (price > baseArrRef[index - 1]) return price
+      //     })
+      //     .filter((price) => price !== undefined)
+      // }
+      //......тут погано тому що не існуючи індекси
+      function getArrayNumberBiggerNumberBefore(arrayIncome) {
+        let resultArray = []
+        for (let i = 1; i < arrayIncome; i++) if (arrayIncome[i] > arrayIncome[i - 1]) resultArray.push(resultArray[i])
+        return resultArray
       }
 
-      //2)генеруємо рандомну оцінку по предмету
-      function getRandomScores() {
-        const randomNum = Math.floor(Math.random() * 5) + 1
-        return randomNum
-      }
+      // Виводимо резульатт
+      document.write(`3.масив,  у якому список з тих цін, які більші за попереднє значення = ${arrayNumberBiggerNumberBefore}<br>`)
 
-      //3)ф-ція для заповнювання массиву
-      function fillArraysScores(numbersSubjects, fillableArray) {
-        for (let i = 0; i < numbersSubjects; i++) {
-          fillableArray.push(getRandomScores())
-        }
-        console.log(fillableArray)
-        return fillableArray
+      //4) Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
+      const arraysPercentFromMaxNumber = getPercentFromMaxNumber(arrayHistory)
+      function getPercentFromMaxNumber(array) {
+        const maxNumber = Math.max(...array)
+        console.log(maxNumber)
+        return array.map((element) => ((element / maxNumber) * 100).toFixed(2))
       }
+      // Виводимо резульатт
+      document.write(`4.новий масив, що міститиме значення цін у відсотках стосовно максимального = ${arraysPercentFromMaxNumber}<br>`)
 
-      //4)  перевірки
-      function checkStudentsScores(arrayScores) {
-        let avarageScores = 0
-        let minScores = 5 //перевіремо всі оцінки і по мінімальній зрозуміємо до кого відноситься учень
-        for (let index = 0; index < arrayScores.length; index++) {
-          const element = arrayScores[index]
-          // console.log(element)
-          avarageScores += element // cумуємо оцінки для визначення середньої оцінки
-          if (element < minScores) minScores = element
-        }
-        console.log(avarageScores)
-        console.log(avarageScores / arrayScores.length)
-        return [checkStatusStudent(minScores), avarageScores / arrayScores.length] //поверта
-      }
+      //5)Підрахувати кількість змін цін
+      //6)Визначити, чи є ціна, що менше 1000
+      const thereIsPriceLower100 = arrayHistory.some((element) => element < 1000)
+      // Виводимо резульатт
+      document.write(`6.Визначити, чи є ціна, що менше 1000 = ${thereIsPriceLower100}<br>`)
 
-      //5)Функція для виводу результату
-      function showResultStudent(rusults) {
-        document.write(`Студент - ${rusults[0]} <br>`)
-        document.write(`Середня оцінка студента - ${rusults[1]}`)
-      }
+      //7.Визначати, чи усі ціни більше за 1000
+      const thereIsAllHigher100 = arrayHistory.every((element) => element > 1000)
+      document.write(`7.Визначати, чи усі ціни більше за 1000 = ${thereIsAllHigher100}<br>`)
 
-      // Заповнюємо масив
-      arrayScores = fillArraysScores(inputNumbersSubjects, arrayScores)
-      //Викликаємо функцію   перевірки
-      const results = checkStudentsScores(arrayScores)
-      //Виводимо результат
-      showResultStudent(results)
+      //8.Підрахувати кількість цін, що більше за 1000
+      const amountPricesOver1000 = arrayHistory.reduce((counterNumbers, element) => (element > 1000 ? counterNumbers + 1 : counterNumbers), 0)
+      document.write(`8.Підрахувати кількість цін, що більше за 1000 = ${amountPricesOver1000}<br>`)
+
+      //9.Підрахувати суму цін, що більше за 1000
+      const totalAmountPricesOver1000 = arrayHistory.reduce((total, element) => (element > 1000 ? total + element : total), 0)
+      document.write(`9.Підрахувати кількість цін, що більше за 1000 = ${totalAmountPricesOver1000}<br>`)
+
+      //10.Знайти першу ціну, що більше за 1000
+      const firstPriceOver1000 = arrayHistory.filter((element) => element > 1000)[0]
+      document.write(`10.Знайти першу ціну, що більше за 1000 = ${firstPriceOver1000}<br>`)
+
+      //11.Знайти індекс першої ціни, що більше за 1000
+      const indexFirstPriceOver1000 = arrayHistory.reduce((result, element, index, arrBaseRef) => (element > 1000 ? (result = index) : result), 0)
+      // .map((element, index) => {
+      //   if (element > 1000) return (element = index)
+      // })
+      // .filter((element) => element !== undefined)[0]
+      document.write(`11.Знайти індекс першої ціни, що більше за 1000 = ${indexFirstPriceOver1000}<br>`)
+
+      //12.Знайти останню ціну, що більше за 1000
+      const LastPriceOver1000 = arrayHistory.filter((element) => element > 1000).pop()
+      document.write(`12.Знайти останню ціну, що більше за 1000 = ${LastPriceOver1000}<br>`)
+
+      //13.Знайти індекс останньої ціни, що більше за 1000
+      const indexLastPriceOver1000 = arrayHistory
+        .map((element, index) => {
+          if (element > 1000) return (element = index)
+        })
+        .filter((element) => element !== undefined)
+        .pop()
+      document.write(`13.Знайти індекс останньої ціни, що більше за 1000 = ${indexLastPriceOver1000}<br>`)
     </script>
   </body>
 </html>
