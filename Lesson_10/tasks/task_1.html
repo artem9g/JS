@@ -88,7 +88,7 @@
       function getPercentFromMaxNumber(array) {
         const maxNumber = Math.max(...array)
         console.log(maxNumber)
-        return array.map((element) => ((element / maxNumber) * 100).toFixed(2))
+        return array.map((element) => Math.floor((element / maxNumber) * 100))
       }
       // Виводимо резульатт
       document.write(`4.новий масив, що міститиме значення цін у відсотках стосовно максимального = ${arraysPercentFromMaxNumber}<br>`)
@@ -112,28 +112,20 @@
       document.write(`9.Підрахувати кількість цін, що більше за 1000 = ${totalAmountPricesOver1000}<br>`)
 
       //10.Знайти першу ціну, що більше за 1000
-      const firstPriceOver1000 = arrayHistory.filter((element) => element > 1000)[0]
+      const firstPriceOver1000 = arrayHistory.find((element) => element > 1000)
       document.write(`10.Знайти першу ціну, що більше за 1000 = ${firstPriceOver1000}<br>`)
 
       //11.Знайти індекс першої ціни, що більше за 1000
-      const indexFirstPriceOver1000 = arrayHistory.reduce((result, element, index, arrBaseRef) => (element > 1000 ? (result = index) : result), 0)
-      // .map((element, index) => {
-      //   if (element > 1000) return (element = index)
-      // })
-      // .filter((element) => element !== undefined)[0]
+      const indexFirstPriceOver1000 = arrayHistory.findIndex((element) => element > 1000)
+
       document.write(`11.Знайти індекс першої ціни, що більше за 1000 = ${indexFirstPriceOver1000}<br>`)
 
       //12.Знайти останню ціну, що більше за 1000
-      const LastPriceOver1000 = arrayHistory.filter((element) => element > 1000).pop()
+      const LastPriceOver1000 = arrayHistory.findLast((element) => element > 1000)
       document.write(`12.Знайти останню ціну, що більше за 1000 = ${LastPriceOver1000}<br>`)
 
       //13.Знайти індекс останньої ціни, що більше за 1000
-      const indexLastPriceOver1000 = arrayHistory
-        .map((element, index) => {
-          if (element > 1000) return (element = index)
-        })
-        .filter((element) => element !== undefined)
-        .pop()
+      const indexLastPriceOver1000 = arrayHistory.findLastIndex((element) => element > 1000)
       document.write(`13.Знайти індекс останньої ціни, що більше за 1000 = ${indexLastPriceOver1000}<br>`)
     </script>
   </body>

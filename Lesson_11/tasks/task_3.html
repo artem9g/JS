@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 11</title>
+  </head>
+
+  <body>
+    <h1>Задача 3</h1>
+    <div>
+      <h3><a href="../index.html">Повернутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.</p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      function createBattleField() {
+        let ships = 5
+        let battleField = [
+          [2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2],
+        ]
+        function generateRandomPositionX() {
+          let x = Math.floor(Math.random() * 6)
+          return x
+        }
+        function generateRandomPositionY() {
+          let y = Math.floor(Math.random() * 6)
+          return y
+        }
+        //розташовуємо кораблі
+        while (ships !== 0) {
+          let x = generateRandomPositionX()
+          let y = generateRandomPositionY()
+          if (battleField[x][y] === 2) {
+            battleField[x][y] = 1
+            ships--
+          }
+        }
+        return battleField
+      }
+
+      //цикл бою
+      function startBattle(battleField) {
+        let amountShoots = 10
+        let ships = 0
+        do {
+          let x = parseInt(prompt("Введіть коордінату Х, 0-5"))
+          let y = parseInt(prompt("Введіть коордінату Y ,0-5"))
+          if (battleField[x][y] === 1) {
+            battleField[x][y] = 2
+            amountShoots--
+            ships++
+            alert(`Ви потопили корабель, залишок снарядів = ${amountShoots}`)
+          } else {
+            amountShoots--
+            alert(`Ви промахнулись, залишок снарядів = ${amountShoots}`)
+          }
+          if (ships === 5) break
+          if (amountShoots === 0) break
+        } while (true)
+        return [ships, amountShoots]
+      }
+      // виводимо результат
+      let result = startBattle(createBattleField())
+
+      document.write(`Кількість поптоплениї кораблів = ${result[0]}, Кількість снарядів що залишилися = ${result[1]}`)
+    </script>
+  </body>
+</html>

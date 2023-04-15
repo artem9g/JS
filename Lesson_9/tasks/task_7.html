@@ -19,7 +19,7 @@
       //якщо треба внести змінити  масив то використаю foreach/ for of, а map коли треба новий масив
 
       arrayPrices.forEach((number, index, baseArrRef) => {
-        if (number > 1000) baseArrRef[index] = (number * 0.7).toFixed(0)
+        if (number > 1000) baseArrRef[index] = Math.floor(number * 0.7)
       })
 
       //Виводимо результат

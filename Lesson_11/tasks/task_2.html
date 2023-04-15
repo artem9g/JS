@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 11</title>
+  </head>
+
+  <body>
+    <h1>Задача 2</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Дано інформацію про прибуток К магазинів протягом тижня. Знайти :</p>
+      <ol>
+        <li>загальний прибуток кожного масиву за тиждень;</li>
+        <li>загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);</li>
+        <li>загальний прибуток за робочі дні</li>
+        <li>загальний прибуток за вихідні дні</li>
+        <li>максимальний прибуток за середу</li>
+        <li>сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200</li>
+        <li>відсортувати кожен тиждень за зростанням</li>
+        <li>відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків</li>
+        <li>упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).</li>
+      </ol>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      const threeWeeksIncomePayments = [
+        [100, 6324, 2541, 2145, 2855, 45, 6874],
+        [5245, 6324, 5555, 2145, 2855, 25, 8874],
+        [5245, 6324, 2541, 2145, 2855, 5741, 7874],
+      ]
+      document.write(`Сам Масив З яким працюємо= ${threeWeeksIncomePayments}<br><br>`)
+      // загальний прибуток кожного масиву за тиждень
+      function getShopsWeekIncome(incomeArray) {
+        let weekIncomeForShops = []
+        for (let i = 0; i < incomeArray.length; i++) {
+          weekIncomeForShops.push(incomeArray[i].reduce((prevElement, element) => prevElement + element))
+        }
+        return weekIncomeForShops
+      }
+      //виводимо результат
+      document.write(`1.Загальний прибуток кожного масиву за тиждень = ${getShopsWeekIncome(threeWeeksIncomePayments)}<br><br>`)
+
+      //загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.)
+      function getIncomePerDays(incomeArray) {
+        let incomePerDays = new Array(7).fill(0)
+        // console.log(incomePerDays)
+        for (let i = 0; i < incomeArray.length; i++) {
+          for (let a = 0; a < incomeArray[i].length; a++) {
+            incomePerDays[a] = incomePerDays[a] + incomeArray[i][a]
+          }
+        }
+        return incomePerDays
+      }
+      //виводимо результат
+      document.write(`2.загальний прибуток усіх магазинів по дням  = ${getIncomePerDays(threeWeeksIncomePayments)}<br><br>`)
+
+      //3.загальний прибуток за робочі дні
+      function getAllIncomeWorksDays(arrayIncome) {
+        let allSum = 0
+        let workDays = 5
+        for (const week of arrayIncome) {
+          // вариант1 був,але length ріже глобальний масив((
+          // week.length = 5
+          // allSum += week.reduce((prevEl, element) => prevEl + element)
+          // вариант2
+          for (let i = 0; i < workDays; i++) {
+            allSum += week[i]
+          }
+        }
+        return allSum
+      }
+      //виводимо результат
+      document.write(`3.загальний прибуток за робочі дні  = ${getAllIncomeWorksDays(threeWeeksIncomePayments)}<br><br>`)
+
+      //4.загальний прибуток за вихідні дні
+      function getAllIncomeForWeekendDays(arrayIncome) {
+        let allSum = 0
+        // console.log(arrayIncome[0].length)
+        for (const week of arrayIncome) {
+          // використав поп але також видаляє в глобальній
+          // let lat1 = week.pop()
+          // let lat2 = week.pop()
+          // allSum = allSum + lat1 + lat2
+          for (let i = 5; i < 7; i++) {
+            allSum += week[i]
+          }
+        }
+        return allSum
+      }
+      //виводимо результат
+      document.write(`4.загальний прибуток за вихідні дні  = ${getAllIncomeForWeekendDays(threeWeeksIncomePayments)}<br><br>`)
+      // console.log(threeWeeksIncomePayments)
+
+      //5.максимальний прибуток за середу
+      function getMaxWednesday(arrayIncome) {
+        let arrayWednesdays = []
+        for (const week of arrayIncome) {
+          arrayWednesdays.push(week[2])
+        }
+        return Math.max(...arrayWednesdays)
+      }
+      //виводимо результат
+      document.write(`5.максимальний прибуток за середу = ${getMaxWednesday(threeWeeksIncomePayments)}<br><br>`)
+
+      //6.сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200`
+      function getNumbersOver200(arrayIncome) {
+        let numbersOver100 = []
+        for (const week of arrayIncome) {
+          numbersOver100.push(...week.filter((element) => element > 200)) //+ деструктурізація
+        }
+        return numbersOver100
+      }
+      //виводимо результат
+      document.write(`6. сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200 = ${getNumbersOver200(threeWeeksIncomePayments)}<br><br>`)
+
+      //7.відсортувати кожен тиждень за зростанням
+      function getSortWeeksOfGrow(incomeArray) {
+        let sortedArr = []
+        for (let i = 0; i < incomeArray.length; i++) {
+          sortedArr[i] = incomeArray.map((week) => week.sort((el1, el2) => el1 - el2))
+        }
+        return sortedArr
+      }
+      //виводимо результат
+      document.write(`7. відсортувати кожен тиждень за зростанням = ${getSortWeeksOfGrow(threeWeeksIncomePayments)}<br><br>`)
+
+      //13 lesson 45-50min
+      //8.відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+      function getSortWeeksOfMaxDay(incomeArray) {
+        let resultArray = JSON.parse(JSON.stringify(incomeArray))
+        let maxOfWeeks = resultArray.map((array) => Math.max(...array))
+
+        function sortArrWeeksOfMaxDay(incomeAr, maxDaysAr) {
+          const preLastIndex = maxDaysAr.length - 1
+
+          for (let i = 0; i < preLastIndex; i++) {
+            let currentMaxIndex = i
+            for (let j = i + 1; j < maxDaysAr.length; j++) {
+              if (maxDaysAr[j] > maxDaysAr[currentMaxIndex]) currentMaxIndex = j
+            }
+            if (i !== currentMaxIndex) {
+              //змініємо в окремому масиві з максимальними
+              let tmp = maxDaysAr[i]
+              maxDaysAr[i] = maxDaysAr[currentMaxIndex]
+              maxDaysAr[currentMaxIndex] = tmp
+              //змініємо в осномному масиві
+              tmp = incomeAr[i]
+              incomeAr[i] = incomeAr[currentMaxIndex]
+              incomeAr[currentMaxIndex] = tmp
+            }
+            // console.log(maxDaysAr)
+          }
+          return incomeAr
+        }
+
+        return sortArrWeeksOfMaxDay(resultArray, maxOfWeeks)
+      }
+      //виводимо результат
+      console.log(getSortWeeksOfMaxDay(threeWeeksIncomePayments))
+
+      //9. Упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
+      function getSortWeeksOfSumPerWeekDown(incomeArray) {
+        let resultArray = JSON.parse(JSON.stringify(incomeArray))
+        let sumsOfWeeks = resultArray.map((array) => [...array].reduce((prev, element) => prev + element))
+
+        function sortArrWeeksOfMaxSum(incomeAr, maxDaysAr) {
+          const preLastIndex = maxDaysAr.length - 1
+          for (let i = 0; i < preLastIndex; i++) {
+            let currentMaxIndex = i
+            for (let j = i + 1; j < maxDaysAr.length; j++) {
+              if (maxDaysAr[j] > maxDaysAr[currentMaxIndex]) currentMaxIndex = j
+            }
+            if (i !== currentMaxIndex) {
+              //змініємо в окремому масиві з максимальними
+              let tmp = maxDaysAr[i]
+              maxDaysAr[i] = maxDaysAr[currentMaxIndex]
+              maxDaysAr[currentMaxIndex] = tmp
+              //змініємо в осномному масиві
+              tmp = incomeAr[i]
+              incomeAr[i] = incomeAr[currentMaxIndex]
+              incomeAr[currentMaxIndex] = tmp
+            }
+            // console.log(maxDaysAr)
+          }
+          return incomeAr
+        }
+
+        return sortArrWeeksOfMaxSum(resultArray, sumsOfWeeks)
+      }
+      //виводимо результат
+      console.log(getSortWeeksOfSumPerWeekDown(threeWeeksIncomePayments))
+    </script>
+  </body>
+</html>

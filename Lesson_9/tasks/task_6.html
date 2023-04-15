@@ -21,7 +21,7 @@
 
       //через forEach
       arrayNumbers.forEach((number, index, baseArrRef) => {
-        if (number > arrayNumbers[0]) baseArrRef[index] = number * 100
+        if (number > baseArrRef[0]) baseArrRef[index] = number * 2
       })
 
       //Виводимо результат

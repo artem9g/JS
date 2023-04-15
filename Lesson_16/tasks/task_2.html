@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 11</title>
+  </head>
+
+  <body>
+    <h1>Задача 2</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового еквіваленту. Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.</p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      class TMoney {
+        constructor(initHRN, initExchangeRate, exchangeRatePlus100) {
+          this.exchangeRate = initExchangeRate
+          this.dolllars = initHRN / this.exchangeRate
+          this.exchangePlus100 = exchangeRatePlus100
+        }
+        get HRNSum() {
+          return this.exchangeRate === this.exchangePlus100 ? this.dolllars * this.exchangeRate + 100 : this.dolllars * this.exchangeRate
+        }
+
+        set addHRN(incomeHRN) {
+          this.dolllars += incomeHRN / this.exchangeRate
+        }
+        set withdrawalHRH(withdrHRN) {
+          this.dolllars -= withdrHRN / this.exchangeRate
+        }
+        set changeExchangeRate(newExRate) {
+          this.exchangeRate = newExRate
+        }
+        toString() {
+          ;`Dollars:${this.dolllars}, Rate:${this.exchangeRate}, SpecialRate:${this.exchangePlus100}`
+        }
+      }
+      //Виводимо результат
+      let arr = new TMoney(10000, 25, 30)
+      // arr.changeExchangeRate = 30
+      // arr.withdrawalHRH = 300
+      // let a = arr.HRNSum
+      // console.log(a)
+      console.log(arr)
+    </script>
+  </body>
+</html>
