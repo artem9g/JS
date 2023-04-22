@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 17</title>
+  </head>
+
+  <body>
+    <h1>Задача 4</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва, реєстраційний номер).</p>
+      <p>Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за назвою фірми.</p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      class ManufactureInfo {
+        constructor(manufacture, regNumber) {
+          this.manufacture = manufacture
+          this.regNumber = regNumber
+        }
+        toString() {
+          return `${this.manufacture}, ${this.regNumber}`
+        }
+      }
+      class Product {
+        constructor(dataProd, manufacture, regNumber) {
+          Object.assign(this, dataProd)
+          this.manufactureInfo = new ManufactureInfo(manufacture, regNumber)
+        }
+        toString() {
+          return `${this.title}, ${this.unitOfMeasurement}, ${this.amount}, ${this.manufactureInfo} `
+        }
+      }
+
+      class BazaProduct {
+        // :)
+      }
+
+      const pod1 = new Product({ title: "Jacket-T", unitOfMeasurement: "centimeter", amount: 200 }, "Nike", "545185AA")
+      const pod2 = new Product({ title: "t-shirt-V", unitOfMeasurement: "meter", amount: 200 }, "Adidas", "545185FA")
+      document.write(`${pod1}`)
+    </script>
+  </body>
+</html>

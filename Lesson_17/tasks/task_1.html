@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 17</title>
+  </head>
+
+  <body>
+    <h1>Задача 1</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних, кількість входжень деякого числа (статичні методи)</p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      class OperationOnArray {
+        static AmountPositiveNumbers(incomeArray) {
+          let arrayPositive = []
+          for (let number of incomeArray) {
+            if (number > 0 && number != Infinity) arrayPositive.push(number)
+          }
+          return arrayPositive
+        }
+        static AmountNegativeNumbers(incomeArray) {
+          let arrayNegative = []
+          for (let number of incomeArray) {
+            if (number < 0 && number != -Infinity) arrayNegative.push(number)
+          }
+          return arrayNegative
+        }
+        static numberOfOccurrences(number, incomeArray) {
+          return incomeArray.reduce((counter, element) => (number === element ? counter + 1 : counter), 0)
+        }
+      }
+      let array1 = [20, 22, 30, -5, 0, 10, 20, -22, -20]
+      document.write(`Pos:${OperationOnArray.AmountPositiveNumbers(array1)}<br>`)
+      document.write(`Neg:${OperationOnArray.AmountNegativeNumbers(array1)}<br>`)
+      document.write(`кількість співпадання = ${OperationOnArray.numberOfOccurrences(20, array1)}<br>`)
+    </script>
+  </body>
+</html>

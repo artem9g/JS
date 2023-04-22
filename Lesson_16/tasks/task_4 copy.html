@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 16</title>
+  </head>
+
+  <body>
+    <h1>Задача 4</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      class Myarray {
+        static sumContuer = 0
+        static prodContuer = 0
+        static maxContuer = 0
+        static totalObjectNumber = 0
+
+        constructor(dataList) {
+          this.dataList = [...dataList]
+          Myarray.totalObjectNumber++
+        }
+        getSum() {
+          Myarray.sumContuer++
+          return this.dataList.reduce((prevSum, el) => prevSum + el)
+        }
+        getProduct() {
+          Myarray.prodContuer++
+          return this.dataList.reduce((prevSum, el) => prevSum * el)
+        }
+        getMax() {
+          Myarray.maxContuer++
+          return Math.max(...this.dataList)
+        }
+        static getStatistics() {
+          return `<br>total objectsNumber= ${Myarray.totalObjectNumber}<br>sum = ${Myarray.sumContuer}<br> prod = ${Myarray.prodContuer}<br> maxCounter${Myarray.maxContuer}`
+        }
+      }
+      let m1 = new Myarray([2, 1, 4])
+      document.write(`Sum = ${m1.getSum()}`)
+      document.write(`Sum = ${m1.getSum()}`)
+      document.write(`Sum = ${m1.getSum()}`)
+      document.write(`Sum2 = ${m1.getProduct()}`)
+      document.write(`Sum3 = ${m1.getMax()}`)
+
+      let m2 = new Myarray([22, 12, 41, 35])
+      document.write(`<br>Statistics:${Myarray.getStatistics()}`)
+    </script>
+  </body>
+</html>

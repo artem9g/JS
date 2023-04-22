@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 17</title>
+  </head>
+
+  <body>
+    <h1>Задача 2</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Створити службове авто (водій, марка, номер). Створити клас таким чином, щоб можна було створити тільки один екземпляр цього класу.</p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      class ServiceAuto {
+        static checkOneclass
+        constructor(driver, markAuto, numberAuto) {
+          if (ServiceAuto.checkOneclass) {
+            document.write("Вже існує -- ")
+            return ServiceAuto.checkOneclass
+          }
+          this.driver = driver
+          this.markAuto = markAuto
+          this.numberAuto = numberAuto
+          ServiceAuto.checkOneclass = this
+        }
+
+        get ServiceAuto() {
+          return "yes"
+        }
+        set ServiceAuto(date) {
+          Object.assign(this.date)
+        }
+        toString() {
+          return `${this.driver} - ${this.markAuto} - ${this.numberAuto} <br>`
+        }
+      }
+      document.write(new ServiceAuto("Valera", "BMW", "AA6845BH"))
+      document.write(new ServiceAuto("V ", "B ", "A "))
+    </script>
+  </body>
+</html>

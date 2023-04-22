@@ -12,10 +12,111 @@
     <div>
       <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
       <h4><b>Завдання:</b></h4>
-      <p>Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.</p>
+      <p>Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.</p>
     </div>
     <script>
       //Вводимо необхідні дані
+      class Bankomat {
+        #denominations = {
+          5: 0,
+          10: 0,
+          20: 0,
+          50: 0,
+          100: 0,
+          200: 0,
+        }
+        constructor(bill5, bill10, bill20, bill50, bill100, bill200) {
+          this.#denominations[5] = bill5
+          this.#denominations[10] = bill10
+          this.#denominations[20] = bill20
+          this.#denominations[50] = bill50
+          this.#denominations[100] = bill100
+          this.#denominations[200] = bill200
+        }
+
+        set Bill5(inputBill) {
+          if (inputBill === 5) this.#denominations["5"] += 1
+          else if (inputBill === 0) this.#denominations["5"] += 0 //якщо початкове значеня нуль
+          else throw new Error("Купюра не 5, введіть 5 або використутей інший метод для цієї купюри")
+        }
+        set Bill10(inputBill) {
+          if (inputBill === 10) this.#denominations["10"] += 1
+          else if (inputBill === 0) this.#denominations["10"] += 0 //якщо початкове значеня нуль
+          else throw new Error("Купюра не  10, введіть 10 або використутей інший метод для цієї купюри")
+        }
+        set Bill20(inputBill) {
+          if (inputBill === 20) this.#denominations["20"] += 1
+          else throw new Error("Купюра не 20, введіть 20 або використутей інший метод для цієї купюри")
+        }
+        set Bill50(inputBill) {
+          if (inputBill === 50) this.#denominations["50"] += 1
+          else throw new Error("Купюра не 50, введіть 50 або використутей інший метод для цієї купюри")
+        }
+        set Bill100(inputBill) {
+          if (inputBill === 100) this.#denominations["100"] += 1
+          else throw new Error("Купюра не 100, введіть 100 або використутей інший метод для цієї купюри")
+        }
+        set Bill200(inputBill) {
+          if (inputBill === 200) this.#denominations["200"] += 1
+          else throw new Error("Купюра не 200, введіть 200 або використутей інший метод для цієї купюри")
+        }
+        //метод знаходження максимальної суми
+        get maxSum() {
+          return Object.keys(this.#denominations).reduce((sum, banknoteTitle) => (sum += banknoteTitle * this.#denominations[banknoteTitle]), 0)
+        }
+
+        //метод знаходження мін суми
+        get minSum() {
+          const banknotesTitles = Object.keys(this.#denominations)
+          let minSum = 0
+          let i = 0
+          while (minSum < 0 || i < banknotesTitles.length) {
+            if (this.#denominations[banknotesTitles[i]] > 0) return (minSum = banknotesTitles[i])
+            else i++
+          }
+          return minSum
+        }
+        //видання деякої суми----------------------------------------
+        set Withdrawal(cash) {
+          if (cash % this.minSum !== 0 || cash < this.minSum || cash > this.maxSum || !isFinite(cash) || !Number.isInteger(cash)) throw new Error("Incorrect cash value")
+          // список номіналів банкнот
+          const banknotesTitles = Object.keys(this.#denominations)
+          let i = banknotesTitles.length - 1
+          while (cash >= 5) {
+            console.log(cash, "cash loop")
+            // сума поточної банкноти
+            const banknoteSum = banknotesTitles[i] * this.#denominations[banknotesTitles[i]]
+            const nominal = banknotesTitles[i]
+            if (cash > banknoteSum) {
+              this.#denominations[nominal] -= Math.floor(banknoteSum / nominal)
+              cash -= banknoteSum
+            } else {
+              this.#denominations[nominal] -= Math.floor(cash / nominal)
+              cash = cash % nominal
+            }
+            i--
+          }
+        }
+        //------------------------------------------------------------
+        toString() {
+          return `
+                    Total number of banknotes in denominations 5:   ${this.#denominations[5]}<br>
+                    Total number of banknotes in denominations 10:  ${this.#denominations[10]}<br>
+                    Total number of banknotes in denominations 20:  ${this.#denominations[20]}<br>
+                    Total number of banknotes in denominations 50:  ${this.#denominations[50]}<br>
+                    Total number of banknotes in denominations 100: ${this.#denominations[100]}<br>
+                    Total number of banknotes in denominations 200: ${this.#denominations[200]}<br>
+                      `
+        }
+      }
+      let bankomat1 = new Bankomat(2, 6, 10, 15, 18, 10) // створюємо банокмат і вписуємо початкові дані(кількість банкнот, а не сумми ) - без перевірки
+
+      document.write(`${bankomat1}`)
+      document.write(`Мінімальна сума/банкнота = ${bankomat1.minSum} <br>`)
+      document.write(`Максимальна сума яку може видати банкомат = ${bankomat1.maxSum}<br>`)
+      document.write(`Знімаємо= ${(bankomat1.Withdrawal150 = 150)}<br>`)
+      document.write(`Максимальна сума яку може видати банкомат = ${bankomat1.maxSum}<br>`)
+      // document.write(`${bankomat1}`)
     </script>
   </body>
 </html>

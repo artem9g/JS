@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 14</title>
+  </head>
+
+  <body>
+    <h1>Задача 2</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.</p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      let someDateObj = { day: 12, month: 1, year: 2002 }
+      let inputmonth = parseInt(prompt("Введіть кількість місяців"))
+      function getYearAfterNMonth(inputDate, nMonth) {
+        let totalMonth = inputDate.month + nMonth
+        console.log(totalMonth)
+        if (totalMonth > 12) {
+          inputDate.year = inputDate.year + Math.floor(totalMonth / 12)
+        }
+        if (totalMonth % 12 === 0) inputDate.month = 12
+        else inputDate.month = totalMonth % 12
+
+        return inputDate.year
+      }
+      //перевірку на день в залежності місяця не робив
+      //виводимо результат
+      document.write(`Start date = ${JSON.stringify(someDateObj)}<br>Через ${inputmonth} місяців буде ${JSON.stringify(getYearAfterNMonth(someDateObj, inputmonth))} рік.  `)
+    </script>
+  </body>
+</html>

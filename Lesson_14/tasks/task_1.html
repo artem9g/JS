@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 14</title>
+  </head>
+
+  <body>
+    <h1>Задача 1</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <a href="./tasks/task_1.html">Задача 1</a>
+      <p>Описати масив об’єктів – сайтів розроблених компанією з такими властивостями</p>
+      <p>
+        ----- Властивості ------ назва компанії на час розробки (назву періодично змінюють) власник компанії споснсори (масив спонсорів) <br />
+        * прізвище спонсора <br />* ім’я спонсора <br />* сума вкладень спонсора <br />
+        рік випуску <br />вартість сайту
+      </p>
+      <p>Знайти:</p>
+      <ol>
+        <li>загальну вартість усіх сайтів</li>
+        <li>кількість сайтів, що було зроблено між 2000 та 2009 рр.</li>
+        <li>кількість сайтів, де сума спонсорських вкладень була більшою за 100000</li>
+        <li>створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)</li>
+        <li>знайти рік, коли прибуток був найбільшим</li>
+        <li>упорядкувати список за спаданням прибутку</li>
+        <li>Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000</li>
+      </ol>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      const ourCases = [
+        {
+          projectName: "testName1",
+          ownerCompany: "Carlos Red",
+          sponsors: [
+            { surname: "Garry", name: "White", investment: 10500 },
+            { surname: "Larson", name: "Larry", investment: 18500 },
+          ],
+          yearReasle: 2007,
+          totalPriceWSite: 41000,
+        },
+        {
+          projectName: "testName2",
+          ownerCompany: "Carlos Red",
+          sponsors: [
+            { surname: "Garry", name: "White", investment: 55001 },
+            { surname: "Lorry", name: "Ted", investment: 45000 },
+          ],
+          yearReasle: 2015,
+          totalPriceWSite: 350000,
+        },
+        {
+          projectName: "testName3",
+          ownerCompany: "Carlos Red",
+          sponsors: [
+            { surname: "Garry", name: "White", investment: 11200 },
+            { surname: "Lorry", name: "Ted", investment: 13500 },
+          ],
+          yearReasle: 2002,
+          totalPriceWSite: 90000,
+        },
+        {
+          projectName: "testName4",
+          ownerCompany: "Carloses Red",
+          sponsors: [
+            { surname: "Koo", name: "Lee", investment: 5000 },
+            { surname: "Wer", name: "Kop", investment: 2000 },
+          ],
+          yearReasle: 2002,
+          totalPriceWSite: 9000,
+        },
+      ]
+
+      //Знаходимо загальну вартість усіх сайтів
+      const SumPrices = ourCases.reduce((sum, project) => project.totalPriceWSite)
+
+      //кількість сайтів, що було зроблено між 2000 та 2009 рр.
+      const period2002_2009 = ourCases.reduce((counter, project) => (project.yearReasle > 2000 && project.yearReasle < 2009 ? counter + 1 : counter), 0)
+
+      //кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+      const amountProjectSponsornOver100k = ourCases.reduce((counter, project) => {
+        let sumproject = 0
+        for (const sponsor of project.sponsors) {
+          sumproject += sponsor.investment
+        }
+        return sumproject > 100000 ? counter + 1 : counter
+      }, 0)
+
+      //створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+      function getListOfAllSponsors(ourCases) {
+        let resultArr = []
+        for (let i = 0; i < ourCases.length; i++) {
+          for (let a = 0; a < ourCases[i].sponsors.length; a++) {
+            resultArr.push(ourCases[i].sponsors[a].surname + " " + ourCases[i].sponsors[a].name)
+          }
+        }
+        return resultArr
+      }
+
+      //знайти рік, коли прибуток був найбільшим -- вибрав варінант в абсолютном еквіваленті, а не в %
+
+      function yearOfMaxProfit(ourCases) {
+        let result = 0
+        let maxProfitYear = 0
+        for (let i = 0; i < ourCases.length; i++) {
+          let sumInvestment = 0
+          for (let a = 0; a < ourCases[i].sponsors.length; a++) {
+            sumInvestment = sumInvestment + ourCases[i].sponsors[a].investment
+          }
+          const profit = ourCases[i].totalPriceWSite - sumInvestment //вартість мінус інвестиції - прибуток
+          if (profit > result) {
+            result = profit
+            maxProfitYear = ourCases[i].yearReasle
+          } else result = result // порівняння з попередним проектом
+        }
+        return maxProfitYear //повертаємо рік з найбільшим прибутком
+      }
+
+      //упорядкувати список за спаданням прибутку
+      function getSortedListProfit(ourCases) {
+        let resultArr = []
+
+        for (let i = 0; i < ourCases.length; i++) {
+          let sumInvestment = 0
+          for (let a = 0; a < ourCases[i].sponsors.length; a++) {
+            sumInvestment = sumInvestment + ourCases[i].sponsors[a].investment
+          }
+
+          resultArr.push(ourCases[i].totalPriceWSite - sumInvestment) //вартість мінус інвестиції - прибуток
+        }
+        resultArr.sort((a, b) => b - a) // сортуємо масив
+        return resultArr //повертаємо
+      }
+
+      //Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+      function getTwoList(ourCases) {
+        let listUnder10000 = []
+        let listHigh10000 = []
+        for (let i = 0; i < ourCases.length; i++) {
+          ourCases[i].totalPriceWSite < 10000 ? listUnder10000.push(JSON.parse(JSON.stringify(ourCases[i]))) : listHigh10000.push(JSON.parse(JSON.stringify(ourCases[i])))
+        }
+        return [listUnder10000, listHigh10000]
+      }
+
+      //Виводмио результат
+      document.write(`1. Загальна вартість усіх сайтів = ${SumPrices} <br>`)
+      document.write(`2. кількість сайтів, що було зроблено між 2000 та 2009 рр. = ${period2002_2009}<br>`)
+      document.write(`3. кількість сайтів, де сума спонсорських вкладень була більшою за 100000 = ${amountProjectSponsornOver100k}<br>`)
+      document.write(`4. створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив) = ${getListOfAllSponsors(ourCases)}<br>`)
+      document.write(`5. знайти рік, коли прибуток був найбільшим = ${yearOfMaxProfit(ourCases)}<br>`)
+      document.write(`6. упорядкувати список за спаданням прибутку= ${getSortedListProfit(ourCases)}<br>`)
+
+      console.log(getTwoList(ourCases))
+      document.write(`7.Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 -- ${JSON.stringify(getTwoList(ourCases)[0])}<br><br> і більше 10000-- ${JSON.stringify(getTwoList(ourCases)[1])}`)
+    </script>
+  </body>
+</html>
