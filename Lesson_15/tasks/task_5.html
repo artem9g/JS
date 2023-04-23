@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 15</title>
+  </head>
+
+  <body>
+    <h1>Задача 5</h1>
+    <div>
+      <h3><a href="../index.html">Повернутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Розробити клас «Керівник танців»</p>
+      <table border="1px">
+        <tbody>
+          <tr>
+            <td>Поля</td>
+            <td>
+              <p>Масив імен хлопців</p>
+              <p>Масив імен дівчат</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Методи</td>
+            <td>
+              <p>Метод випадкового вибору імені хлопця</p>
+              <p>Метод випадкового вибору імені дівчини</p>
+              <p>Метод виведення пари для танців</p>
+              <p>Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      //Вводимо необхідні дані
+      const boyArr = ["Ivan", "Sergey", "Andrey", "Nikolay"]
+      const girlArr = ["Olga", "Anna", "Svetlana", "Valeriya"]
+      class DancerManager {
+        constructor(arrBoy, arrGirl) {
+          this.groupBoy = arrBoy
+          this.groupGirl = arrGirl
+        }
+        getRandomBoy() {
+          return this.groupBoy[Math.floor(Math.random() * this.groupBoy.length)]
+        }
+        getRandomGirl() {
+          return this.groupGirl[Math.floor(Math.random() * this.groupGirl.length)]
+        }
+        getpairForDance() {
+          return document.write(`${this.getRandomBoy()}, ${this.getRandomGirl()} <br> `)
+        }
+        run() {
+          setInterval(() => this.getpairForDance(), 5000)
+        }
+      }
+      const obj1 = new DancerManager(boyArr, girlArr)
+      obj1.run()
+    </script>
+  </body>
+</html>

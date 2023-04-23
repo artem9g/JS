@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 15</title>
+  </head>
+
+  <body>
+    <h1>Задача 4</h1>
+    <div>
+      <h3><a href="../index.html">Повернутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Розробити клас Baner</p>
+      <table border="1px">
+        <tbody>
+          <tr>
+            <td><p>Поля</p></td>
+            <td><p>Масив об’єктів ( графічних зображень та посилань на сайти)</p></td>
+          </tr>
+          <tr>
+            <td>Методи</td>
+            <td>
+              <p>Метод випадкового вибору об’єкта (графічного зображення та посилання)</p>
+              <p>Метод виведення випадкового банера</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      class Baner {
+        constructor(ban1, ban2, ban3) {
+          this.arr1 = [ban1, ban2, ban3]
+        }
+        getRandomObj() {
+          return this.arr1[0 + Math.floor(Math.random() * (2 - 0 + 1))]
+        }
+        showRandomObject() {
+          const randomBanner = this.getRandomObj()
+          document.write(`<a target="_blank" href="${randomBanner.link}"><img width='200px' src="${randomBanner.image}" alt="Banner"></a>`)
+        }
+      }
+
+      //Вводимо необхідні дані
+      const banner1 = { image: "../img/15.4.1.png", link: "https://www.linkedin.com/" }
+      const banner2 = { image: "../img/15.4.2.png", link: "https://www.facebook.com/" }
+      const banner3 = { image: "../img/15.4.3.png", link: "https://www.youtube.com/" }
+      let randomBaner = new Baner(banner1, banner2, banner3)
+      randomBaner.showRandomObject()
+    </script>
+  </body>
+</html>

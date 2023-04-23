@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 15</title>
+  </head>
+
+  <body>
+    <h1>Задача 3</h1>
+    <div>
+      <h3><a href="../index.html">Повернутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Розробити клас MultChecker для перевірки таблиці множення</p>
+      <table border="1px">
+        <tbody>
+          <tr>
+            <td>Поля</td>
+            <td>
+              <p>Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)</p>
+              <p>Кількість правильних відповідей</p>
+              <p>Кількість неправильних відповідей</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Методи</td>
+            <td>
+              <p>Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)</p>
+              <p>Перевірка правильності вказаної відповіді</p>
+              <p>render - виведення інформації про тестування на екран</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+      class MultChecker {
+        constructor(checkNumber) {
+          this.checkNumber = checkNumber
+          this.trueAnswers = 0
+          this.falseAnswers = 0
+        }
+        generateExample() {
+          const secondNumber = 1 + Math.floor(Math.random() * (10 - 1 + 1))
+          let result = secondNumber * this.checkNumber
+          return { trueResult: result, secondNumber: secondNumber }
+        }
+
+        ifAnswerCorrect() {
+          const { trueResult, secondNumber } = this.generateExample()
+          let answer = parseInt(prompt(`${this.checkNumber} * ${secondNumber} = ?`))
+          console.log(answer)
+          console.log(trueResult)
+          if (answer === trueResult) {
+            this.trueAnswers++
+            return true
+          } else {
+            this.falseAnswers++
+            return false
+          }
+        }
+
+        render() {
+          document.write(`Число, яке перевіряємо: ${this.checkNumber}.<br>`)
+          document.write(`Кількість правильних відповідей: ${this.trueAnswers}.<br>`)
+          document.write(`Кількість неправильних відповідей: ${this.falseAnswers}.<br>`)
+        }
+      }
+
+      let multiChecker1 = new MultChecker(7)
+      multiChecker1.ifAnswerCorrect()
+      multiChecker1.render()
+
+      //toSting(){return}
+
+      //Вводимо необхідні дані
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 15</title>
+  </head>
+
+  <body>
+    <h1>Задача 2</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <
+      <p>Створити об’єкт «Авто».</p>
+      <table border="1px">
+        <tbody>
+          <tr>
+            <td>Авто</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <p>Марка</p>
+              <p>Розмір бака</p>
+              <p>Кількість наявних літрів</p>
+              <p>Кількість місць</p>
+              <p>Кількість пасажирів</p>
+            </td>
+            <td>Масив, у якому зберігається поле з зайцями</td>
+          </tr>
+          <tr>
+            <td>Методи (дії)</td>
+            <td>
+              <p>Заправка на вказану кількість літрів</p>
+              <p>Виведення кількості пасажирів</p>
+              <p>Додавання пасажирів</p>
+              <p>Висадка пасажирів</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      let auto1 = {
+        brand: "BMW",
+        tankSize: 60,
+        availableFuel: 20,
+        numberOfSeats: 4,
+        passengersNumber: 2,
+        //Заправка на вказану кількість літрів
+        refuelingOnN: function (amountFuelIncome) {
+          let allFuelCheck = amountFuelIncome + this.availableFuel
+          if (amountFuelIncome + this.availableFuel <= this.tankSize) this.availableFuel = amountFuelIncome + this.availableFuel
+          else console.log("Бак на стількі не розрахован!")
+        },
+        //Виведення кількості пасажирів
+        getNumbersOfPassengers: function () {
+          return this.passengersNumber
+        },
+        //Додавання пасажирів
+        addingPassengers(amountPassengers) {
+          if (amountPassengers + this.passengersNumber <= this.numberOfSeats) this.passengersNumber = amountPassengers + this.passengersNumber
+          else console.log("Всього місяця тільки 4")
+        },
+        //Висадка пасажирів
+        landingPassengers(amountPassengers) {
+          this.passengersNumber = this.passengersNumber - amountPassengers
+        },
+      }
+      //Тести
+      auto1.refuelingOnN(15)
+      document.write(`Топливо після додавання 15 л = ${auto1.availableFuel}<br>`)
+      document.write(`Виведення кількості пасажирів = ${auto1.getNumbersOfPassengers()}<br>`)
+      auto1.addingPassengers(1)
+      document.write(` Після Додавання пасажирів ${auto1.passengersNumber}<br>`)
+      auto1.landingPassengers(2)
+      document.write(`Після Висадки пасажирів ${auto1.passengersNumber}<br>`)
+    </script>
+  </body>
+</html>

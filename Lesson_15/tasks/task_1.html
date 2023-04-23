@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 15</title>
+  </head>
+
+  <body>
+    <h1>Задача 1</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <a href="./tasks/task_1.html">Задача 1</a>
+      <p>Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.</p>
+      <table border="1px">
+        <tbody>
+          <tr>
+            <td>Тир</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Поля(властивості)</td>
+            <td>Масив, у якому зберігається поле з зайцями</td>
+          </tr>
+          <tr>
+            <td>Методи (дії)</td>
+            <td>
+              <p>Метод пострілу (задається позиція пострілу)</p>
+              <p>Виведення ігрового поля</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+
+      let shootingGallery = {
+        fieldWithRabbit: [1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0],
+        shootDo: function (shoot) {
+          if (this.fieldWithRabbit[shoot] === 1) {
+            this.fieldWithRabbit[shoot] = 0 // убрали зайця с поля
+            return "Ви попали в зяйця"
+          } else return "Не попали в зяйця"
+        },
+        showField: function () {
+          return this.fieldWithRabbit
+        },
+      }
+      let shootPosition = parseInt(prompt("Задайте позицію пострілу від 0 до 11"))
+      //виводимо результат пострілу
+      document.write(`<br><br>Резузальтат посстрілу = ${shootingGallery.shootDo(shootPosition)}<br>`)
+      document.write(`Виводим поле  ${shootingGallery.showField()}`)
+    </script>
+  </body>
+</html>

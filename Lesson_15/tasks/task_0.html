@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 15</title>
+  </head>
+
+  <body>
+    <h1>Задача 0</h1>
+    <div>
+      <h3><a href="../index.html">Повернутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.</p>
+      <p>Використати обидва методи стосовно обидвох об’єктів (використати call, apply)</p>
+    </div>
+
+    <script>
+      const obj1 = {
+        arr1: [11, 12, 21, 1, 0, -1, -20],
+        getSum: function () {
+          return this.arr1.reduce((sum, element) => element + sum)
+        },
+      }
+      const obj2 = {
+        arr1: [121, 21, 2, 21, -1, -20],
+        getProduct: function () {
+          return this.arr1.reduce((sum, element) => element * sum)
+        },
+      }
+
+      document.write(`Сумма 1 об'єкта = ${obj1.getSum()}<br>`)
+      document.write(`Додак 1 об'єкта = ${obj2.getProduct.call(obj1)}<br>`)
+      document.write(`Сумма 2 об'єкта = ${obj1.getSum.call(obj2)}<br>`)
+      document.write(`Додак 2 об'єкта = ${obj2.getProduct()}<br><br><br>`)
+
+      let obj3 = {
+        getProductIncome: function (a, b, c) {
+          return a * b * c
+        },
+      }
+      let obj4 = {
+        getSumIncome: function (a, b, c) {
+          return a + b + c
+        },
+      }
+      document.write(`Cума 4 об'єкта = ${obj4.getSumIncome(...[21, 10, 1])}<br>`)
+      document.write(`Додак 4 об'єкта = ${obj3.getProductIncome.apply(obj4, [21, 10, 1])}<br><br>`)
+      document.write(`Додак 3 об'єкта = ${obj3.getProductIncome(1, 10, 1)}<br>`)
+      document.write(`Сумма 3 об'єкта = ${obj4.getSumIncome.apply(obj3, [1, 10, 1])}<br>`)
+    </script>
+  </body>
+</html>
