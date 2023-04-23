@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <title>Lesson 11</title>
+    <title>Lesson 16</title>
   </head>
 
   <body>
@@ -17,34 +17,47 @@
     <script>
       //Вводимо необхідні дані
       class TMoney {
+        #dollars = 0
+
         constructor(initHRN, initExchangeRate, exchangeRatePlus100) {
           this.exchangeRate = initExchangeRate
-          this.dollars = initHRN / this.exchangeRate
           this.exchangePlus100 = exchangeRatePlus100
+          this.add = initHRN
         }
         get HRNSum() {
-          return this.exchangeRate === this.exchangePlus100 ? this.dollars * this.exchangeRate + 100 : this.dollars * this.exchangeRate
+          return this.exchangeRate === this.exchangePlus100 ? this.#dollars * this.exchangeRate + 100 : this.#dollars * this.exchangeRate
         }
-
-        set addHRN(incomeHRN) {
-          this.dollars += incomeHRN / this.exchangeRate
+        // щось незрозуміло з завданням задачи, ці 100 до сумми ой
+        //додаємо в доллари
+        set add(incomeHRN) {
+          if (incomeHRN <= 0) throw new Error("Додавати можна тількі більше нуля")
+          this.#dollars += incomeHRN / this.exchangeRate
         }
+        //знімаємо з долларів
         set withdrawalHRH(withdrHRN) {
-          this.dollars -= withdrHRN / this.exchangeRate
+          if (withdrHRN / this.exchangeRate > this.#dollars) throw new Error("Недостатньо коштів, введить меншу сумму")
+          this.#dollars -= withdrHRN / this.exchangeRate
         }
+        // міняємо курс
         set changeExchangeRate(newExRate) {
           this.exchangeRate = newExRate
         }
+        // виводимо
         toString() {
-          return `Dollars: ${this.dollars}, Rate: ${this.exchangeRate}, SpecialRate: ${this.exchangePlus100}`
+          return `Dollars: ${this.#dollars}, Rate: ${this.exchangeRate}, SpecialRate: ${this.exchangePlus100}<br>`
         }
       }
       //Виводимо результат
       let arr = new TMoney(10000, 25, 30)
       document.write(`${arr}`)
-      // arr.changeExchangeRate = 30
-      // arr.withdrawalHRH = 300
-      // let a = arr.HRNSum
+      arr.changeExchangeRate = 30
+
+      arr.withdrawalHRH = 300
+      document.write(`${arr}`)
+      arr.add = 30
+      document.write(`${arr}`)
+
+      document.write(`${arr.HRNSum}`)
       // console.log(a)
       console.log(arr)
     </script>

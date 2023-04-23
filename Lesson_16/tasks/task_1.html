@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <title>Lesson 11</title>
+    <title>Lesson 16</title>
   </head>
 
   <body>
@@ -12,19 +12,22 @@
     <div>
       <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
       <h4><b>Завдання:</b></h4>
-      <p>Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. Дата представляється структурою із трьома полями. Реалізувати методи збільшення/зменшення дати на певну кількість днів, місяців чи років. Введення та виведення дати реалізувати за допомогою методу toString.</p>
+      <p>Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. Дата представляється структурою із трьома полями.</p>
+      <p>Реалізувати методи збільшення/зменшення дати на певну кількість днів, місяців чи років. Введення та виведення дати реалізувати за допомогою методу toString.</p>
     </div>
     <script>
+      //Введення та виведення дати реалізувати за допомогою методу toString.  -- незрозумло про введеня через ту стрінг дивився у інших не побачив такого,може не у всіх, але наріканя на це не було
       //Вводимо необхідні дані
       // щоб не ускладювати, прийняв те що кожному  місяці 30 днів, рік = 360 днів
       class TDate {
-        #day
-        #month
-        #year
+        //нічгшо по факту не перевіряжмо - для практики викор. захищені поля
+        #day = 0
+        #month = 0
+        #year = 0
         constructor(initDay, initMonth, inintYear) {
-          this.#day = initDay
-          this.#month = initMonth
-          this.#year = inintYear
+          this.Day = initDay
+          this.Month = initMonth
+          this.Year = inintYear
         }
 
         get Day() {
@@ -36,35 +39,49 @@
         get Year() {
           return this.#year
         }
+        // зробив унівесальні ф-цію  - одна на додавання і віднімання - знаю що можно було розділити
+        set Day(changeDay) {
+          //вводимо кількітьс днів, а не точний день , тому може бути і більше 30 чи навпаки хочем на н днів назад
+          const sumDays = this.#day + changeDay
+          if (sumDays > 0) {
+            // якщо додаємо дні або мінус но в рамках місяця
+            if (sumDays > 30) this.Month = Math.floor(sumDays / 30) // якщо днів більше 30 то міняємо місяць
+            this.#day = sumDays % 30 === 0 ? 30 : sumDays % 30
+          } else {
+            // якщо віднімаємо дні  І виходимо за рамки місяця в мінус
+            this.Month = -1 + Math.floor(sumDays / 30) // віднімаєо 1 місяць тоиу зо вже мінусні дні,і чекаємо   далі
+            this.#day = sumDays % 30 === 0 ? 30 : 30 - (sumDays % 30) * -1 // визначаємо день
+          }
+        }
 
-        set changeDay(changeDay) {
-          this.#day = this.#day + changeDay
-          if (this.#day > 30) this.changeMonth = Math.floor(this.#day / 30)
-          this.#day = this.#day % 30
-          this.#day = this.#day === 0 ? 30 : this.#day
+        set Month(changeMonth) {
+          const sumMonth = changeMonth + this.#month
+          if (sumMonth > 0) {
+            if (sumMonth > 12) this.Year = Math.floor(sumMonth / 12) // якщо днів більше 30 то міняємо рік
+            this.#month = sumMonth % 12 === 0 ? 12 : sumMonth % 12
+          } else {
+            this.Year = -1 + Math.floor(sumMonth / 12) // віднімаєо 1 місяць тоиу зо вже мінусні дні,і чекаємо   далі
+            this.#month = sumMonth % 12 === 0 ? 12 : 12 - (sumMonth % 12) * -1 // визначаємо день
+          }
         }
-        set changeMonth(changeMonth) {
-          this.#month = this.#month + changeMonth
-          if (this.#month > 12) this.changeYear = Math.floor(this.#month / 12)
-          this.#month = this.#month % 12
-          this.#month = this.#month === 0 ? 12 : this.#month
-        }
-        set changeYear(changeYear) {
+        set Year(changeYear) {
           this.#year += changeYear
-          // на рік не став робити перевірку
         }
-
         toString() {
-          return `Day:${this.#day} , Month ${this.#month}, Year ${this.#year}`
+          return `Day:${this.#day} , Month ${this.#month}, Year ${this.#year}<br>`
         }
       }
-      let arr = new TDate(12, 8, 2020)
+
+      let arr = new TDate(1, 1, 2020)
       //Виводмио результат
 
-      document.write(`<b>Результат: </b>${arr}`)
-      // arr.changeDay = 19
-      // arr.changeMonth = 4
+      document.write(`<b>Початкова: </b>${arr}  `)
+      //
+      arr.Day = 30
+      arr.Month = 12
+      arr.Year = 1
 
+      document.write(`<b>Результат: </b>${arr}`)
       // console.log(arr.Day)
       // console.log(arr.Month)
       // console.log(arr.Year)

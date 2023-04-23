@@ -15,41 +15,107 @@
     </div>
     <script>
       //Вводимо необхідні дані
-      class Myarray {
-        static sumContuer = 0
-        static prodContuer = 0
-        static maxContuer = 0
-        static totalObjectNumber = 0
+      class Bankomat {
+        #denominations = {
+          5: 0,
+          10: 0,
+          20: 0,
+          50: 0,
+          100: 0,
+          200: 0,
+        }
+        constructor(amountBill5, amountBill10, amountBill20, amountBill50, amountBill100, amountBill200) {
+          this.Bill5 = amountBill5
+          this.Bill10 = amountBill10
+          this.Bill20 = amountBill20
+          this.Bill50 = amountBill50
+          this.Bill100 = amountBill100
+          this.Bill200 = amountBill200
+        }
 
-        constructor(dataList) {
-          this.dataList = [...dataList]
-          Myarray.totalObjectNumber++
+        set Bill5(inputAmount) {
+          if (inputAmount >= 0) this.#denominations["5"] += inputAmount
+          else if (inputAmount === 0) this.#denominations["5"] += 0 //якщо початкове значеня нуль
+          else throw new Error("Поповнюємо! - не може бути від'ємним значенням")
         }
-        getSum() {
-          Myarray.sumContuer++
-          return this.dataList.reduce((prevSum, el) => prevSum + el)
+        set Bill10(inputAmount) {
+          if (inputAmount >= 0) this.#denominations["10"] += inputAmount
+          else if (inputAmount === 0) this.#denominations["10"] += 0 //якщо початкове значеня нуль
+          else throw new Error("Поповнюємо! - не може бути від'ємним значенням")
         }
-        getProduct() {
-          Myarray.prodContuer++
-          return this.dataList.reduce((prevSum, el) => prevSum * el)
+        set Bill20(inputAmount) {
+          if (inputAmount >= 0) this.#denominations["20"] += inputAmount
+          else throw new Error("Поповнюємо! - не може бути від'ємним значенням")
         }
-        getMax() {
-          Myarray.maxContuer++
-          return Math.max(...this.dataList)
+        set Bill50(inputAmount) {
+          if (inputAmount >= 0) this.#denominations["50"] += inputAmount
+          else throw new Error("Поповнюємо! - не може бути від'ємним значенням")
         }
-        static getStatistics() {
-          return `<br>total objectsNumber= ${Myarray.totalObjectNumber}<br>sum = ${Myarray.sumContuer}<br> prod = ${Myarray.prodContuer}<br> maxCounter${Myarray.maxContuer}`
+        set Bill100(inputAmount) {
+          if (inputAmount >= 0) this.#denominations["100"] += inputAmount
+          else throw new Error("Поповнюємо! - не може бути від'ємним значенням")
+        }
+        set Bill200(inputAmount) {
+          if (inputAmount >= 0) this.#denominations["200"] += inputAmount
+          else throw new Error("Поповнюємо! - не може бути від'ємним значенням")
+        }
+        //метод знаходження максимальної суми
+        get maxSum() {
+          return Object.keys(this.#denominations).reduce((sum, banknoteTitle) => (sum += banknoteTitle * this.#denominations[banknoteTitle]), 0)
+        }
+
+        //метод знаходження мін суми
+        get minSum() {
+          const banknotesTitles = Object.keys(this.#denominations)
+          let minSum = 0
+          let i = 0
+          while (minSum < 0 || i < banknotesTitles.length) {
+            if (this.#denominations[banknotesTitles[i]] > 0) return (minSum = banknotesTitles[i])
+            else i++
+          }
+          return minSum
+        }
+        //видання деякої суми----------------------------------------
+        set Withdrawal(cash) {
+          if (cash % this.minSum !== 0 || cash < this.minSum || cash > this.maxSum || !isFinite(cash) || !Number.isInteger(cash)) throw new Error("Incorrect cash value")
+          // список номіналів банкнот
+          const banknotesTitles = Object.keys(this.#denominations)
+          let i = banknotesTitles.length - 1
+          while (cash >= 5) {
+            console.log(cash, "cash loop")
+            // сума поточної банкноти
+            const banknoteSum = banknotesTitles[i] * this.#denominations[banknotesTitles[i]]
+            const nominal = banknotesTitles[i]
+            if (cash > banknoteSum) {
+              this.#denominations[nominal] -= Math.floor(banknoteSum / nominal)
+              cash -= banknoteSum
+            } else {
+              this.#denominations[nominal] -= Math.floor(cash / nominal)
+              cash = cash % nominal
+            }
+            i--
+          }
+        }
+        //------------------------------------------------------------
+        toString() {
+          return `
+                    Total number of banknotes in denominations 5:   ${this.#denominations[5]}<br>
+                    Total number of banknotes in denominations 10:  ${this.#denominations[10]}<br>
+                    Total number of banknotes in denominations 20:  ${this.#denominations[20]}<br>
+                    Total number of banknotes in denominations 50:  ${this.#denominations[50]}<br>
+                    Total number of banknotes in denominations 100: ${this.#denominations[100]}<br>
+                    Total number of banknotes in denominations 200: ${this.#denominations[200]}<br>
+                      `
         }
       }
-      let m1 = new Myarray([2, 1, 4])
-      document.write(`Sum = ${m1.getSum()}`)
-      document.write(`Sum = ${m1.getSum()}`)
-      document.write(`Sum = ${m1.getSum()}`)
-      document.write(`Sum2 = ${m1.getProduct()}`)
-      document.write(`Sum3 = ${m1.getMax()}`)
+      let bankomat1 = new Bankomat(2, 6, 10, 15, 18, 10) // створюємо банокмат і вписуємо початкові дані(кількість банкнот, а не сумми ) - без перевірки
 
-      let m2 = new Myarray([22, 12, 41, 35])
-      document.write(`<br>Statistics:${Myarray.getStatistics()}`)
+      document.write(`${bankomat1}`)
+      document.write(`Мінімальна сума/банкнота = ${bankomat1.minSum} <br>`)
+      document.write(`Максимальна сума яку може видати банкомат = ${bankomat1.maxSum}<br>`)
+      document.write(`Знімаємо= ${(bankomat1.Withdrawal = 150)}<br>`)
+      document.write(`Максимальна сума яку може видати банкомат = ${bankomat1.maxSum}<br>`)
+      // document.write(`${bankomat1}`)
     </script>
   </body>
 </html>

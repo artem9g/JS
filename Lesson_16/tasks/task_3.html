@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <title>Lesson 11</title>
+    <title>Lesson 16</title>
   </head>
 
   <body>
@@ -16,17 +16,74 @@
     </div>
     <script>
       //Вводимо необхідні дані
-      class Firma {
-        constructor( name,foundationDate,arrServices,arrAdress){
-          this.name =name
-          this.foundation=foundationDate
-          for(i=0;i<arrServices.length;ar++){
-                      this.
-          }
 
-          this.
+      class EstablishmentDate {
+        constructor(month, year) {
+          this.month = month
+          this.year = year
+        }
+        toString() {
+          return `EstablishmentDate: ${this.month}.${this.year}<br>`
         }
       }
+
+      class Service {
+        constructor(title, price, deadline) {
+          this.title = title
+          this.price = price
+          this.deadline = deadline
+        }
+        toString() {
+          return ` Service-<b>${this.title}</b>, price=${this.price}, deadline=${this.deadline}`
+        }
+      }
+
+      class Filial {
+        constructor(country, city, street, houseNumber) {
+          this.country = country
+          this.city = city
+          this.street = street
+          this.houseNumber = houseNumber
+        }
+        toString() {
+          return ` Адрес філіалу: ${this.country},${this.city},${this.street},${this.houseNumber}  `
+        }
+      }
+
+      class Firma {
+        constructor(name, foundationDateObj, arrServices, arrAdress) {
+          this.name = name
+          this.foundationDateObj = foundationDateObj
+          this.arrServices = arrServices
+          this.arrAdress = arrAdress
+        }
+        get YearseBeing() {
+          //отримуємо кількіть років від поточного місяця і року до заснування фірми
+          const currentDate = new Date()
+          let year = currentDate.getFullYear() - this.foundationDateObj.year
+          if (currentDate.getMonth() > this.foundationDateObj.month) year -= 1 //якщо менше місяць за потрібний то ще не повні роки, ящо ровно або більше то повні роки
+          return year
+        }
+        filialsByCity(selectedCity) {
+          return this.arrAdress.filter((adress) => adress.city === selectedCity)
+        }
+        checkServicesByMoneyAndTime(money, time) {
+          return this.arrServices.filter((service) => money >= service.price && time >= service.deadline)
+        }
+        toString() {
+          return `Назва-${this.name}<br>Дата заснування-${this.foundationDateObj} Список сервісів:${this.arrServices}<br>Списко філіалів:${this.arrAdress}`
+        }
+      }
+      const establismDate1 = new EstablishmentDate(3, 2000)
+      const listServices1 = [new Service("Cleaning", 2000, 8), new Service("Washing", 1000, 4), new Service("Drying", 500, 1), new Service("Cooking", 5000, 5)]
+      const listFilials1 = [new Filial("Ukraine", "Odesa", "Yerx", "3d"), new Filial("USA", "New York", "Eighth Avenue ", "44"), new Filial("Canada", "Toronto", "Teras", "42"), new Filial("Canada", "Toronto", "Uli", "10")]
+      const firm1 = new Firma("ForAll", establismDate1, listServices1, listFilials1)
+      //виводимо результати
+      document.write(`<b>Кількість років існує фірма</b> = ${firm1.YearseBeing};<br>`)
+      document.write(`<b>Адресса філіалів у вашому місті</b> = ${firm1.filialsByCity("Toronto")} <br>`)
+      //перелік послуг що півпадають по часу і ціні, без вираїування на що стаче коштів або часу, без варійацій
+      document.write(`<b>За встановлений час і суму грошей фірма може виконати такі послуги </b>= ${firm1.checkServicesByMoneyAndTime(4000, 5)}<br>`)
+      document.write(`<br><b>FIRM </b>= ${firm1}<br>`)
     </script>
   </body>
 </html>
