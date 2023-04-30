@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 18</title>
+    <script>
+      let convertOn = function () {
+        const courseDollar = 38
+        const courseEuro = 42
+        let hrn = parseFloat(document.getElementById("hrn").value)
+        let dollar = (document.getElementById("dollars").value = (hrn / courseDollar).toFixed(2))
+        let euro = (document.getElementById("euros").value = (hrn / courseEuro).toFixed(2))
+      }
+      window.onload = function () {
+        document.getElementById("convetBtn").onclick = convertOn
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Задача 2</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Зробити конвертер валют (курси валют – константи у скрипті)</p>
+      <img src="../img/2.png" alt="#" />
+    </div>
+    <script></script>
+    <div class="currency-converter">
+      <div>
+        <label>Сума в гривнях <input type="number" id="hrn" /> </label><br />
+        <button id="convetBtn">Конвертувати</button>
+      </div>
+      <hr />
+      <div>
+        <label
+          >Сума в євро
+          <input type="number" id="dollars" />
+        </label>
+        <br />
+        <label
+          >Сума в долларах
+          <input type="number" id="euros" />
+        </label>
+      </div>
+    </div>
+  </body>
+</html>

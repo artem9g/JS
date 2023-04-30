@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Задача 3 L. 18</title>
+  </head>
+
+  <body>
+    <h1>Задача 3</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Користувач задає рік народження. Визначити кількість років користувача.</p>
+    </div>
+    <div>
+      <label>
+        Введіть рік народження
+        <input id="birthDate" type="number" />
+      </label>
+      <button id="findYears">Знайти кількість років</button>
+      <p>
+        <b>ВАМ:</b>
+        <span id="years"> </span>
+      </p>
+    </div>
+    <script>
+      function findYears() {
+        //находимо дату на зараз
+        const cDate = new Date()
+        const currentYear = cDate.getFullYear()
+        //обробляємо дату народження
+        const dateOfBitrth = document.getElementById("birthDate").value
+        //присвоєваємо результат
+        document.getElementById("years").innerText = currentYear - dateOfBitrth
+      }
+      document.getElementById("findYears").onclick = findYears
+    </script>
+  </body>
+</html>

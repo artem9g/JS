@@ -17,16 +17,17 @@
     <script>
       //Вводимо необхідні дані
       class ServiceAuto {
-        static checkOneclass
+        static checkOneclass // полє по якому будемо чекати чи існує чи ні перший єкземпляр классу
         constructor(driver, markAuto, numberAuto) {
           if (ServiceAuto.checkOneclass) {
+            // переріка і повернення існуючого екземляру
             document.write("Вже існує -- ")
             return ServiceAuto.checkOneclass
           }
           this.driver = driver
           this.markAuto = markAuto
           this.numberAuto = numberAuto
-          ServiceAuto.checkOneclass = this
+          ServiceAuto.checkOneclass = this // записуємо для чекера що перший і єкземпляр створен
         }
 
         get ServiceAuto() {

@@ -12,22 +12,27 @@
     <div>
       <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
       <h4><b>Завдання:</b></h4>
-      <p>Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних, кількість входжень деякого числа (статичні методи)</p>
+      <p>
+        Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних, кількість входжень деякого числа
+        (статичні методи)
+      </p>
     </div>
     <script>
       //Вводимо необхідні дані
+
       class OperationOnArray {
         static AmountPositiveNumbers(incomeArray) {
-          let arrayPositive = []
+          // можно і без конструктора тому що не будем передавати, а тільки із зовні викор. ф-ції
+          let arrayPositive = 0
           for (let number of incomeArray) {
-            if (number > 0 && number != Infinity) arrayPositive.push(number)
+            if (number > 0 && number != Infinity) arrayPositive++
           }
           return arrayPositive
         }
         static AmountNegativeNumbers(incomeArray) {
-          let arrayNegative = []
+          let arrayNegative = 0
           for (let number of incomeArray) {
-            if (number < 0 && number != -Infinity) arrayNegative.push(number)
+            if (number < 0 && number != -Infinity) arrayNegative++
           }
           return arrayNegative
         }
@@ -36,6 +41,7 @@
         }
       }
       let array1 = [20, 22, 30, -5, 0, 10, 20, -22, -20]
+      // використовую статичні методи на основі классу
       document.write(`Pos:${OperationOnArray.AmountPositiveNumbers(array1)}<br>`)
       document.write(`Neg:${OperationOnArray.AmountNegativeNumbers(array1)}<br>`)
       document.write(`кількість співпадання = ${OperationOnArray.numberOfOccurrences(20, array1)}<br>`)

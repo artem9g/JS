@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 17</title>
+  </head>
+
+  <body>
+    <h1>Задача 3</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>
+        Створити клас Нагадувач. Кожні вказані кількості секунд (використати setInterval) програма нагадує про якусь подію (це просто текст) і також виводиться
+        порядковий номер скільки раз вже нагадування було. Зробити так, щоб неможна було зробити одночасно декілька об’єктів-нагадувачів. Методи зупинки
+        таймера, метод зміни повідомлення без зупинки таймера.
+      </p>
+    </div>
+    <script>
+      //Вводимо необхідні дані
+      class Remember1 {
+        static chekerExist //чек на наявність екземляра
+        constructor(text, interval) {
+          if (Remember1.chekerExist) return Remember1.chekerExist //чек на наявність екземляра
+          this.text = text
+          this.interval = interval
+          this.timer // поле для таймера - щоб можно було його старт/стоп
+          this.counterRepet = 0
+          Remember1.chekerExist = this //чек на наявність екземляра
+        }
+        start() {
+          this.timer = setInterval(() => console.log(`${this.text}-${this.counterRepet++} `), this.interval * 1000)
+        }
+        stop() {
+          clearInterval(this.timer)
+        }
+        changeText(newText) {
+          this.text = newText
+        }
+      }
+      let timer1 = new Remember1("Текст", 2)
+      let timer2 = new Remember1("Текст", 2)
+      //через вписування у консоль старт і стоп
+      timer1.start()
+      // timer1.stop()
+      //timer1.changeText("newText")
+    </script>
+  </body>
+</html>

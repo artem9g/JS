@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 18</title>
+    <script>
+      //перший варіант
+      //===========================================================================================
+      // let sumOperation = function () {
+      //   const firstNumber = parseFloat(document.getElementById("1_number").value)
+      //   const secondNumber = parseFloat(document.getElementById("2_number").value)
+      //   let result = (document.getElementById("result").innerText = firstNumber + secondNumber)
+      // }
+      // let minusOperation = function () {
+      //   const firstNumber = parseFloat(document.getElementById("1_number").value)
+      //   const secondNumber = parseFloat(document.getElementById("2_number").value)
+      //   let result = (document.getElementById("result").innerText = firstNumber - secondNumber)
+      // }
+      // let productOperation = function () {
+      //   const firstNumber = parseFloat(document.getElementById("1_number").value)
+      //   const secondNumber = parseFloat(document.getElementById("2_number").value)
+      //   let result = (document.getElementById("result").innerText = firstNumber * secondNumber)
+      // }
+      // let sublimeOperation = function () {
+      //   const firstNumber = parseFloat(document.getElementById("1_number").value)
+      //   const secondNumber = parseFloat(document.getElementById("2_number").value)
+      //   let result = (document.getElementById("result").innerText = firstNumber / secondNumber)
+      // }
+      // window.onload = function () {
+      //   document.querySelector("#sum").onclick = sumOperation
+      //   document.querySelector(".minus").onclick = minusOperation
+      //   document.querySelector(".product").onclick = productOperation
+      //   document.querySelector(".sublime").onclick = sublimeOperation
+      // }
+      //===========================================================================================
+      //Другий варіант
+      let operationOn = function (typeOpeartion) {
+        const firstNumber = parseFloat(document.getElementById("1_number").value)
+        const secondNumber = parseFloat(document.getElementById("2_number").value)
+        switch (typeOpeartion) {
+          case "sum":
+            document.getElementById("result").innerText = firstNumber + secondNumber
+            break
+          case "minus":
+            document.getElementById("result").innerText = firstNumber - secondNumber
+            break
+          case "product":
+            document.getElementById("result").innerText = firstNumber * secondNumber
+            break
+          case "sublime":
+            document.getElementById("result").innerText = firstNumber / secondNumber
+            break
+        }
+      }
+      window.onload = function () {
+        document.querySelector("#sum").onclick = () => operationOn("sum")
+        document.querySelector(".minus").onclick = () => operationOn("minus")
+        document.querySelector(".product").onclick = () => operationOn("product")
+        document.querySelector(".sublime").onclick = () => operationOn("sublime")
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Задача 1</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Розробити калькулятор</p>
+    </div>
+    <div class="calculator">
+      <div>
+        <label>First number:</label>
+        <input type="number" id="1_number" />
+      </div>
+      <div>
+        <label>Second number:</label>
+        <input type="number" id="2_number" />
+      </div>
+      <div class="buttons">
+        <button id="sum">Додати</button>
+        <button class="minus">Відняти</button>
+        <button class="product">Помножити</button>
+        <button class="sublime">Поділити</button>
+      </div>
+      <hr />
+      <div>
+        <label><b>Результат:</b></label>
+        <span id="result" type="text"> </span>
+      </div>
+    </div>
+  </body>
+</html>
