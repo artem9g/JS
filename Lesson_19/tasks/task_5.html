@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Задача 5 L. 18</title>
+    <script>
+      function getTable(rows, cells) {
+        let startTable = document.createElement("table")
+        startTable.setAttribute("border", "2px")
+        for (let row = 0; row < rows; row++) {
+          let rowTable = document.createElement("tr")
+          for (let cell = 0; cell < cells; cell++) {
+            const randomNum = Math.floor(Math.random() * 100)
+            const cellTable = document.createElement("td")
+            cellTable.innerHTML = randomNum
+            rowTable.append(cellTable)
+          }
+          startTable.append(rowTable)
+        }
+        document.getElementById("tableIn").append(startTable)
+      }
+      window.onload = () => getTable(3, 3)
+    </script>
+  </head>
+
+  <body>
+    <h1>Задача 5</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>Відобразити таблицю 3*4 з випадковими числами (її треба динамічно створити і вставити на сторінку)</p>
+    </div>
+    <div id="tableIn"></div>
+  </body>
+</html>

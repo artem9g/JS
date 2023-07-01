@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 19 lesson</title>
+    <style>
+      .min {
+        background-color: red;
+      }
+      .max {
+        background-color: green;
+      }
+    </style>
+    <script>
+      class RandomColoredTable {
+        constructor(rowsCount, columnsCount, minValue = 0, maxValue = 10) {
+          this.rowsCount = rowsCount
+          this.columnsCount = columnsCount
+          this.minValue = minValue
+          this.maxValue = maxValue
+          this.dataArray = this.getRandomArray()
+        }
+        getRandomNumber() {
+          return this.minValue + Math.floor(Math.random() * (this.maxValue - this.minValue + 1))
+        }
+        getRandomArray() {
+          const arr = []
+          for (let r = 0; r < this.rowsCount; r++) {
+            const row = []
+            for (let c = 0; c < this.columnsCount; c++) {
+              row.push(this.getRandomNumber())
+            }
+            arr.push(row)
+          }
+          return arr
+        }
+        get maxNumber() {
+          return Math.max(...this.dataArray.flat())
+        }
+        get minNumber() {
+          return Math.min(...this.dataArray.flat())
+        }
+        render(containerId) {
+          const table = document.createElement(`table`)
+          for (const row of this.dataArray) {
+            const tr = document.createElement("tr")
+            for (const el of row) {
+              const td = document.createElement("td")
+              td.innerText = el
+              if (el === this.minNumber) td.style.backgroundColor = "red" // td.className = "min"   \\classList
+              if (el === this.maxNumber) td.style.backgroundColor = "green" // td.className = "max"   \\classList
+              tr.append(td)
+            }
+            table.append(tr)
+          }
+          document.getElementById(containerId).append(table)
+        }
+      }
+
+      window.onload = function () {
+        const t1 = new RandomColoredTable(3, 4)
+        t1.render("container")
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="container"></div>
+  </body>
+</html>
