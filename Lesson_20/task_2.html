@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 19</title>
+    <style>
+      .green_arrow {
+        background-image: url("./img/task_2/green-arrow.png");
+      }
+      .red_arrow {
+        background-image: url("./img/task_2/red-arrow.png");
+      }
+      .arrow_toggle {
+        /* background-image: url("./img/task_2/green-arrow.png"); */
+        width: 50px;
+        height: 30px;
+        cursor: pointer;
+        padding: 0;
+        border: none;
+      }
+      .mainList,
+      .chosenList {
+        border: solid 1px grey;
+        width: 200px;
+        min-height: 200px;
+        margin-right: 30px;
+      }
+      .full_name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px;
+        padding: 3px;
+        border: solid 1px #000;
+      }
+    </style>
+    <script>
+      class addSelectorsOfSportsmens {
+        constructor(incomeList, targetContainer) {
+          this.incomeList = incomeList
+          this.targetContainer = document.querySelector(targetContainer)
+        }
+        changeList(event) {
+          const button = event.target
+          const toggleName = button.parentElement
+          const parentContainer = button.parentElement.parentElement
+
+          const targetContainer =
+            parentContainer.className === "mainList" ? document.getElementsByClassName("chosenList") : document.getElementsByClassName("mainList")
+
+          parentContainer.removeChild(toggleName)
+          targetContainer[0].append(toggleName)
+
+          if (toggleName.parentElement.className === "mainList") {
+            button.classList.add("green_arrow")
+            button.classList.remove("red_arrow")
+          } else {
+            button.classList.add("red_arrow")
+            button.classList.remove("green_arrow")
+          }
+        }
+
+        render() {
+          // створюємо контейнер з усіма іменами
+          const mainListContainer = document.createElement("div")
+          const mainListTitle = document.createElement("h5")
+          mainListTitle.textContent = "Загальний список"
+          mainListContainer.append(mainListTitle)
+          const mainList = document.createElement("div")
+          mainList.className = "mainList"
+
+          mainListContainer.append(mainList)
+          // заповнюємо контейнер іменами
+          for (const name of this.incomeList) {
+            const nameOfList = document.createElement("div")
+            nameOfList.className = "full_name"
+            const nameContainer = document.createElement("p")
+            nameContainer.innerText = name
+            nameOfList.append(nameContainer)
+            //створюємо стрілку
+            const arrowToggle = document.createElement("button")
+            arrowToggle.className = "arrow_toggle green_arrow"
+            arrowToggle.onclick = this.changeList.bind(this)
+            nameOfList.append(arrowToggle)
+
+            mainList.append(nameOfList)
+          }
+          //створюємо контейнер з обранами іменами
+          const chosenListContainer = document.createElement("div")
+          const chosenListTitle = document.createElement("h5")
+          chosenListTitle.textContent = "Обрані для змагання"
+          chosenListContainer.append(chosenListTitle)
+          const chosenList = document.createElement("div")
+          chosenList.className = "chosenList"
+          chosenListContainer.append(chosenList)
+          //
+
+          this.targetContainer.append(mainListContainer)
+          this.targetContainer.append(chosenListContainer)
+          this.targetContainer.style.display = "flex"
+        }
+      }
+      const firstList = ["Emily Thompson", "Benjamin Rodriguez", "Sophia Patel", "Liam Campbell", "Olivia Nguyen", "Noah Johnson"]
+      window.onload = function () {
+        const firstTable = new addSelectorsOfSportsmens(firstList, ".container")
+        firstTable.render()
+      }
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <h3>
+        Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому є два стовпці. В одному відображені всі
+        спортсмени, в іншому – список тих, хто був вибраний. При натисканні на зелену стрілку спортсмен переміщається у список для змагань. При натисканні на
+        червону стрілку спортсмен переміщається у загальний список.
+      </h3>
+      <img src="./img/task_2/Screenshot_1.png" alt="" />
+      <h2 style="text-align: center">Вирішення завдання</h2>
+    </div>
+    <div class="container"></div>
+  </body>
+</html>

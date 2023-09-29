@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Задача 7 L. 18</title>
+  </head>
+
+  <body>
+    <h1>Задача 7</h1>
+    <div>
+      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
+      <h4><b>Завдання:</b></h4>
+      <p>
+        Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус, літак - випадаючий список), харчування
+        (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+      </p>
+      <hr />
+      <div style="width: 300px; margin: 0 auto" id="solution">
+        <div id="stage_1">
+          <p style="font-weight: 600; margin: 0">Виберіть вид транспорту</p>
+
+          <select name="transport" id="selectedCar">
+            <option value="1000">авто - 1000</option>
+            <option value="500">автобус - 500</option>
+            <option value="4000">літак - 4000</option>
+          </select>
+        </div>
+        <br />
+        <div id="stage_2">
+          <p style="display: inline-block; font-weight: 600; margin: 0">Виберіть вид харчування</p>
+          <div style="display: flex; flex-direction: column">
+            <label>
+              <input type="checkbox" value="120" />
+              сніданок - 120
+            </label>
+            <label>
+              <input type="checkbox" value="150" />
+              обід - 150
+            </label>
+            <label>
+              <input type="checkbox" value="160" />
+              вечеря - 160
+            </label>
+          </div>
+          <br />
+        </div>
+        <div id="stage_3">
+          <p style="display: inline-block; font-weight: 600; margin: 0">Виберіть Гіда</p>
+          <div style="display: flex; flex-direction: column">
+            <form action="#">
+              <label>
+                <input type="radio" value="1200" name="git" />
+                Іван - 1200
+              </label>
+              <label>
+                <input type="radio" value="1300" name="git" />
+                Валерій - 1300
+              </label>
+              <label>
+                <input type="radio" value="1400" name="git" />
+                Артем - 1400
+              </label>
+            </form>
+          </div>
+          <br />
+        </div>
+        <button id="getResult">Розрахувати вартість</button>
+        <p style="font-weight: 600">Вартість подорожі: <span id="finishPrice"></span></p>
+      </div>
+    </div>
+  </body>
+  <script>
+    const getResultBtn = (document.getElementById("getResult").onclick = calculationTripPrice) //по кліку викликаємо фцію розрахунку і виводу результату
+    function calculationTripPrice() {
+      let totalPrice = 0
+      const transportPrice = parseInt(document.getElementById("selectedCar").value)
+      // console.log(transportPrice)
+      const stage2 = document.getElementById("stage_2").getElementsByTagName("input") //колекція інпутів з вибору видів харчування
+      const eatsPrice = [].reduce.call(stage2, (prevSum, price) => (price.checked ? prevSum + parseInt(price.value) : prevSum), 0)
+      //console.log(eatsPrice)
+      const stage3 = document.getElementById("stage_3").getElementsByTagName("input") //колекція інпутів з вибору видів харчування
+      let gitPrice = 0
+      for (price of stage3) {
+        if (price.checked) gitPrice = parseInt(price.value)
+      }
+      //console.log(gitPrice)
+      totalPrice = transportPrice + eatsPrice + gitPrice //загалнга сума
+      //console.log(totalPrice)
+      //виводимо результат
+      document.getElementById("finishPrice").innerText = totalPrice
+    }
+  </script>
+</html>

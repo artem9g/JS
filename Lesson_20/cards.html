@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lesson 19 lesson</title>
+    <style>
+      .cards {
+        display: flex;
+      }
+      .card-container {
+        width: 50px;
+        margin: 10px;
+        background-color: cyan;
+        padding: 10px 15px;
+        text-align: center;
+      }
+      .img-container {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .card-image {
+        width: 30px;
+      }
+    </style>
+    <script>
+      class LinkCard {
+        constructor({ imgSrc, title, link }) {
+          //({ imgSrc, title, link })----происходит деструктуризация и вытягиваем значення
+          //вместо { imgSrc, title, link } поставить dataObj нарпимер
+          this.imgSrc = imgSrc
+          this.title = title
+          this.link = link
+        }
+        render(containerSelector) {
+          const cardContainer = document.createElement("div")
+          cardContainer.className = "card-container"
+
+          const imageContainer = document.createElement("div")
+          imageContainer.className = "img-container"
+
+          const img = document.createElement("img")
+          img.className = "card-image"
+          img.src = this.imgSrc
+          imageContainer.append(img)
+          cardContainer.append(imageContainer)
+
+          //створюжмо назву з лінком
+          const titleContainer = document.createElement("div")
+          titleContainer.className = "card-title"
+          const link = document.createElement("a")
+          link.href = this.link
+          link.innerText = this.title
+          titleContainer.append(link)
+
+          cardContainer.append(titleContainer)
+
+          const targetContainer = document.querySelector(containerSelector)
+          targetContainer.append(cardContainer)
+        }
+      }
+
+      const linksSet = [
+        {
+          imgSrc: "./img/gloge.png",
+          title: "Globe",
+          link: "https://www.globelinkllc.com/",
+        },
+        {
+          imgSrc: "./img/ukr.png",
+          title: "Ukr",
+          link: "https://www.ukr.net/",
+        },
+      ]
+      window.onload = function () {
+        for (const linkData of linksSet) {
+          const c1 = new LinkCard(linkData)
+          c1.render(".cards")
+          //const c1 = new LinkCard(linkData).render(".cards")
+        }
+        // const c1 = new LinkCard(linksSet[0])
+        // c1.render(".cards")
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="cards"></div>
+  </body>
+</html>
