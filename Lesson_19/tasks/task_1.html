@@ -4,92 +4,168 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <title>Lesson 18</title>
-    <script>
-      //перший варіант
-      //===========================================================================================
-      // let sumOperation = function () {
-      //   const firstNumber = parseFloat(document.getElementById("1_number").value)
-      //   const secondNumber = parseFloat(document.getElementById("2_number").value)
-      //   let result = (document.getElementById("result").innerText = firstNumber + secondNumber)
-      // }
-      // let minusOperation = function () {
-      //   const firstNumber = parseFloat(document.getElementById("1_number").value)
-      //   const secondNumber = parseFloat(document.getElementById("2_number").value)
-      //   let result = (document.getElementById("result").innerText = firstNumber - secondNumber)
-      // }
-      // let productOperation = function () {
-      //   const firstNumber = parseFloat(document.getElementById("1_number").value)
-      //   const secondNumber = parseFloat(document.getElementById("2_number").value)
-      //   let result = (document.getElementById("result").innerText = firstNumber * secondNumber)
-      // }
-      // let sublimeOperation = function () {
-      //   const firstNumber = parseFloat(document.getElementById("1_number").value)
-      //   const secondNumber = parseFloat(document.getElementById("2_number").value)
-      //   let result = (document.getElementById("result").innerText = firstNumber / secondNumber)
-      // }
-      // window.onload = function () {
-      //   document.querySelector("#sum").onclick = sumOperation
-      //   document.querySelector(".minus").onclick = minusOperation
-      //   document.querySelector(".product").onclick = productOperation
-      //   document.querySelector(".sublime").onclick = sublimeOperation
-      // }
-      //===========================================================================================
-      //Другий варіант
-      let operationOn = function (typeOpeartion) {
-        const firstNumber = parseFloat(document.getElementById("1_number").value)
-        const secondNumber = parseFloat(document.getElementById("2_number").value)
-        switch (typeOpeartion) {
-          case "sum":
-            document.getElementById("result").innerText = firstNumber + secondNumber
-            break
-          case "minus":
-            document.getElementById("result").innerText = firstNumber - secondNumber
-            break
-          case "product":
-            document.getElementById("result").innerText = firstNumber * secondNumber
-            break
-          case "sublime":
-            document.getElementById("result").innerText = firstNumber / secondNumber
-            break
-        }
+    <title>Lesson 19</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
       }
-      window.onload = function () {
-        document.querySelector("#sum").onclick = () => operationOn("sum")
-        document.querySelector(".minus").onclick = () => operationOn("minus")
-        document.querySelector(".product").onclick = () => operationOn("product")
-        document.querySelector(".sublime").onclick = () => operationOn("sublime")
+      .hrn-symbol {
+        padding-left: 3px;
+        font-size: 16px;
       }
-    </script>
+      .prod_price {
+        color: red;
+        font-size: 22px;
+        margin: 0 0 10px 0;
+      }
+      .card_tag {
+        color: #fff;
+        letter-spacing: 1.5px;
+        padding: 10px 8px;
+        border-radius: 30px;
+        font-weight: 500;
+        width: fit-content;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+      .container {
+        border: solid 1px rgb(170, 170, 170);
+        display: flex;
+      }
+      .card_container {
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        margin: 2px;
+        padding: 7px;
+        border: 7px solid rgba(0, 0, 0, 0);
+        transition: border-color 0.3s ease;
+      }
+      .product_link {
+        color: black;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 18px;
+        margin-bottom: 7px;
+      }
+      .product_image {
+        margin-bottom: 10px;
+
+        height: min-content;
+      }
+    </style>
   </head>
 
   <body>
-    <h1>Задача 1</h1>
     <div>
       <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
       <h4><b>Завдання:</b></h4>
-      <p>Розробити калькулятор</p>
+      <p>Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку</p>
+      <img src="../img/task_1/taskt_1.png" alt="#" />
     </div>
-    <div class="calculator">
-      <div>
-        <label>First number:</label>
-        <input type="number" id="1_number" />
-      </div>
-      <div>
-        <label>Second number:</label>
-        <input type="number" id="2_number" />
-      </div>
-      <div class="buttons">
-        <button id="sum">Додати</button>
-        <button class="minus">Відняти</button>
-        <button class="product">Помножити</button>
-        <button class="sublime">Поділити</button>
-      </div>
-      <hr />
-      <div>
-        <label><b>Результат:</b></label>
-        <span id="result" type="text"> </span>
-      </div>
-    </div>
+    <h3 style="text-align: center; font-size: 36px">Вирішення завдання</h3>
+    <div class="container"></div>
+    <script>
+      class card_type_1 {
+        constructor({ title, imgSrc, price, tagProduct, link }) {
+          this.title = title
+          this.imgSrc = imgSrc
+          this.price = price
+          this.tagProduct = tagProduct
+          this.link = link
+        }
+        // перевырка тега та визначення кольору для нього
+        checkTypeTag(value) {
+          if (value.toLowerCase() == "акція") this.card_tag.style.backgroundColor = "red"
+          else if (value.toLowerCase() == "топ продажів") this.card_tag.style.backgroundColor = "#FFA900"
+          else this.card_tag.style.backgroundColor = none
+        }
+
+        //метод генерування розмітки карточкі товару
+        render(name_targetContainer) {
+          const cardContainer = document.createElement("div")
+          cardContainer.className = "card_container"
+
+          // зміна кольору бордеру при наведені на карточку
+          cardContainer.addEventListener("mouseover", () => {
+            cardContainer.style.borderColor = "#34B75A"
+          })
+          cardContainer.addEventListener("mouseout", () => {
+            cardContainer.style.borderColor = "rgba(0, 0, 0, 0)"
+          })
+          //створення тегу-метки
+          this.card_tag = document.createElement("a")
+          this.card_tag.className = "card_tag"
+          this.card_tag.innerText = this.tagProduct.toUpperCase()
+          //перевірка типу метки
+          this.checkTypeTag(this.card_tag.text)
+          cardContainer.append(this.card_tag)
+          // create image
+          const prodImage = document.createElement("img")
+          prodImage.className = "product_image"
+          prodImage.src = this.imgSrc
+          cardContainer.append(prodImage)
+
+          //create title
+          const titleProd = document.createElement("a")
+          titleProd.className = "product_link"
+          titleProd.innerText = this.title
+          titleProd.href = this.link
+          cardContainer.append(titleProd)
+
+          //create price
+          const hrn = document.createElement("span")
+          hrn.innerText = "₴"
+          console.log(hrn.text)
+          hrn.className = "hrn-symbol"
+          const prodPrice = document.createElement("p")
+          prodPrice.className = "prod_price"
+          prodPrice.innerText = this.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+          prodPrice.append(hrn)
+          cardContainer.append(prodPrice)
+
+          //
+          const targetContainer = document.querySelector(name_targetContainer)
+          targetContainer.append(cardContainer)
+        }
+      }
+
+      const productsList1 = [
+        {
+          title: "Laptop #1 : Ноутбук HP 250 G8 (45S01ES) Silver",
+          imgSrc: "../img/task_1/laptop_1.png",
+          price: 30999,
+          tagProduct: "топ продажів",
+          link: "https://comfy.ua/ua/noutbuk-hp-250-g8-45s01es-silver.html?gclid=Cj0KCQjwqNqkBhDlARIsAFaxvwzgVWrC1ox_lKbGL7G5X1tMrQsBpBy4_VveOsdppzt1MtPsrMQUbpQaAj5DEALw_wcB",
+        },
+        {
+          title: "Laptop #1 : Ноутбук HP 250 G8 (45S01ES) Silver",
+          imgSrc: "../img/task_1/laptop_2.png",
+          price: 13999,
+          tagProduct: "топ продажів",
+          link: "https://comfy.ua/ua/noutbuk-hp-250-g8-45s01es-silver.html?gclid=Cj0KCQjwqNqkBhDlARIsAFaxvwzgVWrC1ox_lKbGL7G5X1tMrQsBpBy4_VveOsdppzt1MtPsrMQUbpQaAj5DEALw_wcB",
+        },
+        {
+          title: "Laptop #1 : Ноутбук HP 250 G8 (45S01ES) Silver",
+          imgSrc: "../img/task_1/laptop_3.png",
+          price: 19999,
+          tagProduct: "акція",
+          link: "https://comfy.ua/ua/noutbuk-hp-250-g8-45s01es-silver.html?gclid=Cj0KCQjwqNqkBhDlARIsAFaxvwzgVWrC1ox_lKbGL7G5X1tMrQsBpBy4_VveOsdppzt1MtPsrMQUbpQaAj5DEALw_wcB",
+        },
+        {
+          title: "Laptop #1 : Ноутбук HP 250 G8 (45S01ES) Silver",
+          imgSrc: "../img/task_1/laptop_4.png",
+          price: 39999,
+          tagProduct: "топ продажів",
+          link: "https://comfy.ua/ua/noutbuk-hp-250-g8-45s01es-silver.html?gclid=Cj0KCQjwqNqkBhDlARIsAFaxvwzgVWrC1ox_lKbGL7G5X1tMrQsBpBy4_VveOsdppzt1MtPsrMQUbpQaAj5DEALw_wcB",
+        },
+      ]
+
+      for (const linkData of productsList1) {
+        const product = new card_type_1(linkData)
+        product.render(".container")
+      }
+    </script>
   </body>
 </html>

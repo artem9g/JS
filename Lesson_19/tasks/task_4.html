@@ -4,44 +4,105 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <title>Задача 4 L. 18</title>
-    <script>
-      let listWish = [
-        "Бажаю тобі міцного здоров'я та витривалості для досягнення всіх твоїх мрій та цілей.",
-        "Нехай кожен день приносить тобі щастя та задоволення, і твоє життя буде наповнене позитивом та радістю.",
-        "Мої найщиріші побажання, щоб ти знайшов свою ідеальну роботу та досягнув фінансової стабільності.",
-        "Бажаю тобі знайти справжню любов та мати щасливу сім'ю, яка завжди буде поруч та підтримуватиме тебе.",
-        "Нехай твої мрії стануть реальністю, а твої таланти та здібності розквітнуть на повну силу.",
-        "Бажаю тобі успіхів у всіх твоїх зусиллях, і нехай ти завжди знаєш, що твої зусилля цінуються та оцінюються.",
-        "Нехай ти знайдеш внутрішній мир та гармонію, і твоє життя буде сповнене духовного розвитку та зростання.",
-        "Бажаю тобі подорожей та пригод, які збагатять твоє життя новими емоціями та враженнями.",
-        "Нехай твої друзі та родина завжди бути поруч тебе, допомагати та підтримувати в складних моментах.",
-        "Бажаю тобі віри у себе та свої здібності, і невпинного зростання як особистості та професіонала.",
-      ]
-      function get3RandomWish() {
-        for (let i = 0; i < 3; i++) {
-          const randonNumber = Math.floor(Math.random() * listWish.length)
-          const text = listWish.splice(randonNumber, 1) // запамїятовуємо перемінну і видаляжмоз масиво щоб не було повторювання
-          const newDiv = document.createElement("p")
-          newDiv.append(text)
-          document.querySelector(".show-wishes").append(newDiv)
-        }
+    <title>Урок 19</title>
+    <style>
+      body {
+        height: 100%;
+        width: 100%;
       }
-      window.onload = () => get3RandomWish()
+      #ree {
+        height: 100%;
+        width: 100%;
+      }
+      .star {
+        display: block;
+        position: absolute;
+      }
+    </style>
+    <script>
+      //   class starType1 {
+      //     constructor(step, interval, minSize, maxSize, srcStar) {
+      //       this.step = step
+      //       this.interval = interval
+      //       this.minSize = minSize
+      //       this.maxSize = maxSize
+      //       this.srcStar = srcStar
+      //     }
+
+      //     generateRandomPosition() {
+      //       const x = Math.floor(Math.random() * (600 - 2 + 1)) + 2
+      //       const y = Math.floor(Math.random() * (600 - 2 + 1)) + 2
+      //       return { x, y }
+      //     }
+
+      //     createStar() {
+      //       const star = document.createElement("img")
+      //       star.className = "star"
+      //       star.src = this.srcStar
+
+      //       let starSize = this.minSize // Начальный размер звезды
+      //       star.style.width = `${starSize}px`
+      //       star.style.height = `${starSize}px`
+      //       const newRandomPosition = this.generateRandomPosition() // Генерируем новую случайную позицию
+      //       star.style.left = `${newRandomPosition.x}px`
+      //       star.style.top = `${newRandomPosition.y}px`
+
+      //       const increaseSize = () => {
+      //         starSize += this.step // Увеличиваем размер звезды на шаг
+      //         star.style.width = `${starSize}px`
+      //         star.style.height = `${starSize}px`
+
+      //         if (starSize >= this.maxSize) {
+      //           // Если достигнут максимальный размер
+      //           clearInterval(riseStar) // Останавливаем интервал
+      //           const newRandomPosition = this.generateRandomPosition() // Генерируем новую случайную позицию
+      //           star.style.left = `${newRandomPosition.x}px`
+      //           star.style.top = `${newRandomPosition.y}px`
+      //           starSize = this.minSize // Задаем новый начальный размер звезды
+      //           star.style.width = `${starSize}px`
+      //           star.style.height = `${starSize}px`
+
+      //           riseStar = setInterval(increaseSize, this.interval) // Запускаем интервал повторного увеличения размера
+      //         }
+      //       }
+
+      //       let riseStar = setInterval(increaseSize, this.interval) // Запускаем интервал увеличения размера
+      //       return star
+      //     }
+
+      //     render(amountStars, targetContainer) {
+      //       this.amountStars = amountStars
+      //       this.targetContainer = document.getElementById(targetContainer)
+
+      //       const container = document.createElement("div")
+      //       container.style.height = "600px"
+      //       container.style.width = "1000px"
+      //       container.style.position = "relative"
+
+      //       for (let stars = 0; stars < this.amountStars; stars++) {
+      //         container.append(this.createStar())
+      //       }
+
+      //       this.targetContainer.append(container)
+      //     }
+      //   }
+
+      //   window.onload = function () {
+      //     const stars = new starType1(0.5, 20, 5, 80, "./img/task_4/vecteezy_lens-flare-light-special-effect_8507591_744.png")
+      //     stars.render(30, "ree")
+      //   }
+      //
     </script>
   </head>
 
   <body>
-    <h1>Задача 4</h1>
     <div>
-      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
-      <h4><b>Завдання:</b></h4>
-      <p>
-        Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх треба
-        створити і додати на сторінку)
-      </p>
-      <hr />
+      <h3>
+        Задача 4. Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій частині екрану. Кожна зірка з певним кроком і інтервалом збільшується
+        від мінімального до максимального розміру. Як тільки досягнути максимального розміру зірочка повинна з’являтися у іншій випадковій позиції.
+      </h3>
+      <h2 style="text-align: center">Вирішення завдання</h2>
     </div>
-    <div class="show-wishes"></div>
+    <div id="ree"></div>
   </body>
 </html>

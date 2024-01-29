@@ -4,38 +4,87 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <title>Задача 3 L. 18</title>
+    <title>Урок 19</title>
+    <style>
+      /* #ree {
+      } */
+      .oneSnowFlake {
+        width: 70px;
+        height: 70px;
+        position: absolute;
+        background-size: contain;
+      }
+    </style>
+    <script>
+      class snowflake {
+        constructor(targetContainer, scrSnowflake) {
+          this.targetContainer = document.getElementById(targetContainer)
+          this.scrSnowflake = scrSnowflake
+        }
+
+        moveSnowflake() {
+          const oneSnowFlake = document.querySelector(".oneSnowFlake")
+          const screenWidth = window.innerWidth
+          const screenHeight = window.innerHeight
+          const duration = 12000 // продолжительность движения в миллисекундах
+          const amplitude = screenWidth / 4 // амплитуда движения влево и вправо
+
+          const startX = Math.random() * (screenWidth - oneSnowFlake.offsetWidth) // случайное начальное положение по горизонтали
+          const startY = -oneSnowFlake.offsetHeight // начальное положение по вертикали (сверху экрана)
+
+          let startTime = null
+
+          function animateSnowflake(timestamp) {
+            if (!startTime) startTime = timestamp
+            const elapsed = timestamp - startTime
+
+            const progress = Math.min(elapsed / duration, 1) // определяем прогресс движения от 0 до 1
+
+            const topPosition = startY + screenHeight * progress // вычисляем текущую вертикальную позицию
+
+            const horizontalOffset = Math.sin(progress * Math.PI * 2) * amplitude // вычисляем горизонтальное смещение влево и вправо
+
+            oneSnowFlake.style.top = `${topPosition}px`
+            oneSnowFlake.style.left = `${startX + horizontalOffset}px`
+
+            if (progress < 1) {
+              // если анимация не завершена, продолжаем анимировать
+              requestAnimationFrame(animateSnowflake)
+            } else {
+              // если анимация завершена, сбрасываем позицию и запускаем новую анимацию
+              startX = Math.random() * (screenWidth - oneSnowFlake.offsetWidth)
+              startY = -oneSnowFlake.offsetHeight
+              startTime = null
+              requestAnimationFrame(animateSnowflake)
+            }
+          }
+
+          requestAnimationFrame(animateSnowflake)
+        }
+        render() {
+          const oneSnowFlake = document.createElement("div")
+          oneSnowFlake.style.backgroundImage = `url("${this.scrSnowflake}")`
+          oneSnowFlake.className = "oneSnowFlake"
+
+          this.targetContainer.append(oneSnowFlake)
+          this.moveSnowflake.bind(this)()
+        }
+      }
+      window.onload = function () {
+        const first_snow_flake = new snowflake("ree", "../img/task_3/free-icon-snow-flake-6259603.png")
+        first_snow_flake.render()
+      }
+    </script>
   </head>
 
   <body>
-    <h1>Задача 3</h1>
     <div>
-      <h3><a href="../index.html">Поврнутися до головної сторінки з усіма ДЗ.</a></h3>
-      <h4><b>Завдання:</b></h4>
-      <p>Користувач задає рік народження. Визначити кількість років користувача.</p>
+      <h3>
+        Вывести падающий снег. Снежинка появляется в верхней части экрана и с случайной скоростью движется вниз. Как только снежинка достигает нижней части
+        экрана, она снова должна появиться в верхней части экрана.
+      </h3>
+      <h2 style="text-align: center">Вирішення завдання</h2>
     </div>
-    <div>
-      <label>
-        Введіть рік народження
-        <input id="birthDate" type="number" />
-      </label>
-      <button id="findYears">Знайти кількість років</button>
-      <p>
-        <b>ВАМ:</b>
-        <span id="years"> </span>
-      </p>
-    </div>
-    <script>
-      function findYears() {
-        //находимо дату на зараз
-        const cDate = new Date()
-        const currentYear = cDate.getFullYear()
-        //обробляємо дату народження
-        const dateOfBitrth = document.getElementById("birthDate").value
-        //присвоєваємо результат
-        document.getElementById("years").innerText = currentYear - dateOfBitrth
-      }
-      document.getElementById("findYears").onclick = findYears
-    </script>
+    <div id="ree"></div>
   </body>
 </html>
